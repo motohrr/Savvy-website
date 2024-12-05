@@ -36,7 +36,7 @@
             <li><a href="#home-section">Inicio</a></li>
             <li><a href="#services-section">Servicios</a></li>
             <li><a href="#projects-section">Proyectos</a></li>
-            <li><a>Contacto</a></li>
+            <li><a href="#contacts-section">Contacto</a></li>
           </ul>
         </div>
         <a class="btn btn-ghost text-2xl norican-font">Alfredo's</a>
@@ -46,7 +46,7 @@
           <li><a href="#home-section">Inicio</a></li>
           <li><a href="#services-section">Servicios</a></li>
           <li><a href="#projects-section">Proyectos</a></li>
-          <li><a>Contacto</a></li>
+          <li><a href="#contacts-section">Contacto</a></li>
         </ul>
       </div>
       <div class="navbar-end">
@@ -201,6 +201,50 @@
 
         <div class="flex flex-row justify-center">
           <button class="btn btn-primary">Ver más proyectos</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contacts -->
+    <div class="hero bg-base-200 min-h-screen" id="contacts-section">
+      <div class="hero-content flex-col lg:flex-row-reverse gap-4">
+        <div class="text-center lg:text-left flex flex-col justify-center items-center gap-4">
+          <h1 class="text-5xl font-bold my-4">Visitanos</h1>
+          <iframe width="400" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=%20+(Alfredo's)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> <a href='http://maps-website.com/es'>Clic</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=02bc1728b2881c6a96a462312611dbb1334bc891'></script>
+        </div>
+        <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <form class="card-body">
+            <p class="card-title text-2xl">
+              Contáctanos
+            </p>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Nombre</span>
+              </label>
+              <input type="text" placeholder="Nombre" class="input input-bordered" required />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Email</span>
+              </label>
+              <input type="email" placeholder="email" class="input input-bordered" required />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Teléfono</span>
+              </label>
+              <input type="text" placeholder="Teléfono" class="input input-bordered" required />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Mensaje</span>
+              </label>
+              <textarea placeholder="Escribe un mensaje..." class="textarea textarea-bordered" required></textarea>
+            </div>
+            <div class="form-control mt-6">
+              <button class="btn btn-primary">Enviar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
