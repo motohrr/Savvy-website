@@ -63,14 +63,99 @@
       <div class="hero-overlay bg-opacity-60"></div>
       <div class="hero-content text-neutral-content text-center">
         <div class="max-w-md">
-          <h1 class="mb-5 lg:text-5xl md:text-4xl text-2xl font-bold hidden-until-visible animate-fade animate-duration-[5000ms]">
+          <h1
+            class="mb-5 lg:text-5xl md:text-4xl text-2xl font-bold hidden-until-visible animate-fade animate-duration-[5000ms]"
+          >
             Perfección en techos para espacios exclusivos
           </h1>
-          <p class="mb-5 lg:text-md text-sm hidden-until-visible animate-fade animate-duration-[5000ms]">
+          <p
+            class="mb-5 lg:text-md text-sm hidden-until-visible animate-fade animate-duration-[5000ms]"
+          >
             Proveemos soluciones de techado premium diseñadas para realzar la
             belleza y proteger los hogares más distinguidos.
           </p>
-          <button class="btn btn-primary btn-outline lg:btn-md btn-sm">Agendar una consulta</button>
+          <button
+            class="btn btn-primary btn-outline lg:btn-md btn-sm"
+            onclick="appt_modal.showModal()"
+          >
+            Agendar una consulta
+          </button>
+          <dialog id="appt_modal" class="modal w-screen max-w-screen">
+            <div class="modal-box w-full">
+              <h3 class="text-lg font-bold">Agendar una consulta</h3>
+              <form method="dialog">
+                <button
+                  class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                >
+                  ✕
+                </button>
+              </form>
+              <div class="flex flex-row justify-center items-center">
+                <form class="card-body w-sm max-w-sm" id="appt-form">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text lg:text-md text-sm">Nombre</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Nombre"
+                      class="input input-bordered lg:input-md input-sm"
+                      required
+                      name="name"
+                      id="appt-name"
+                    />
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text lg:text-md text-sm">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="email"
+                      class="input input-bordered lg:input-md input-sm"
+                      required
+                      name="email"
+                      id="appt-email"
+                    />
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text lg:text-md text-sm"
+                        >Teléfono</span
+                      >
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Teléfono"
+                      class="input input-bordered phone"
+                      required
+                      name="phone"
+                      id="appt-phone"
+                    />
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text lg:text-md text-sm">Mensaje</span>
+                    </label>
+                    <textarea
+                      placeholder="Escribe un mensaje..."
+                      class="textarea textarea-bordered lg:textarea-md textarea-sm"
+                      required
+                      name="message"
+                      id="appt-message"
+                    ></textarea>
+                  </div>
+                  <div class="form-control mt-6">
+                    <button
+                      class="btn btn-primary btn-outline lg:btn-md btn-sm"
+                    >
+                      Enviar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
       </div>
     </div>
@@ -78,15 +163,25 @@
     <!-- Services 1 -->
     <div class="hero bg-base-200 min-h-screen" id="services-section">
       <div class="flex flex-col">
-        <p class="lg:text-5xl md:text-3xl text-2xl text-center my-2 playwrite-font hidden-until-visible animate-fade animate-duration-[5000ms]">Servicios</p>
+        <p
+          class="lg:text-5xl md:text-3xl text-2xl text-center my-2 playwrite-font hidden-until-visible animate-fade animate-duration-[5000ms]"
+        >
+          Servicios
+        </p>
         <div class="hero-content flex-col lg:flex-row-reverse">
           <img
             src="./images/services-1-metal.jpg"
             class="lg:max-w-sm max-w-xs rounded-lg lg:shadow-2xl shadow-lg"
           />
           <div>
-            <h1 class="lg:text-3xl md:text-2xl text-xl font-bold hidden-until-visible animate-fade animate-duration-[6000ms]">Techado de metal</h1>
-            <p class="py-6 lg:text-lg text-md lg:max-w-md max-w-sm hidden-until-visible animate-fade animate-duration-[7000ms]">
+            <h1
+              class="lg:text-3xl md:text-2xl text-xl font-bold hidden-until-visible animate-fade animate-duration-[6000ms]"
+            >
+              Techado de metal
+            </h1>
+            <p
+              class="py-6 lg:text-lg text-md lg:max-w-md max-w-sm hidden-until-visible animate-fade animate-duration-[7000ms]"
+            >
               "Soluciones de techado de metal duraderas, modernas y resistentes,
               ideales para proteger y realzar cualquier propiedad."
             </p>
@@ -103,8 +198,14 @@
           class="lg:max-w-sm lg:max-h-sm max-w-xs max-h-sm rounded-lg lg:shadow-2xl shadow-lg lg:hidden"
         />
         <div>
-          <h1 class="lg:text-3xl md:text-2xl text-xl font-bold hidden-until-visible animate-fade animate-duration-[6000ms]">Techado de tejas</h1>
-          <p class="py-6 lg:text-lg text-md lg:max-w-md max-w-sm hidden-until-visible animate-fade animate-duration-[7000ms]">
+          <h1
+            class="lg:text-3xl md:text-2xl text-xl font-bold hidden-until-visible animate-fade animate-duration-[6000ms]"
+          >
+            Techado de tejas
+          </h1>
+          <p
+            class="py-6 lg:text-lg text-md lg:max-w-md max-w-sm hidden-until-visible animate-fade animate-duration-[7000ms]"
+          >
             "Techado de tejas elegante y resistente, diseñado para brindar
             estilo y protección duradera a tu hogar."
           </p>
@@ -124,8 +225,14 @@
           class="lg:max-w-sm max-w-xs rounded-lg lg:shadow-2xl shadow-lg"
         />
         <div>
-          <h1 class="lg:text-3xl md:text-2xl text-xl font-bold hidden-until-visible animate-fade animate-duration-[6000ms]">Techado ecológico</h1>
-          <p class="py-6 lg:text-lg text-md lg:max-w-md max-w-sm hidden-until-visible animate-fade animate-duration-[7000ms]">
+          <h1
+            class="lg:text-3xl md:text-2xl text-xl font-bold hidden-until-visible animate-fade animate-duration-[6000ms]"
+          >
+            Techado ecológico
+          </h1>
+          <p
+            class="py-6 lg:text-lg text-md lg:max-w-md max-w-sm hidden-until-visible animate-fade animate-duration-[7000ms]"
+          >
             "Techado ecológico sostenible y eficiente, diseñado para cuidar el
             planeta mientras protege tu hogar."
           </p>
@@ -136,10 +243,16 @@
     <!-- Projects -->
     <div class="hero bg-base-500 min-h-screen" id="projects-section">
       <div class="hero-content flex flex-col">
-        <p class="playwrite-font lg:text-5xl text-2xl text-center my-4 hidden-until-visible animate-fade animate-duration-[5000ms]">Proyectos</p>
+        <p
+          class="playwrite-font lg:text-5xl text-2xl text-center my-4 hidden-until-visible animate-fade animate-duration-[5000ms]"
+        >
+          Proyectos
+        </p>
         <div class="grid lg:grid-cols-2 grid-cols-1 lg:gap-4 gap-2">
           <!-- Project 1 -->
-          <div class="card bg-base-100 hidden-until-visible animate-fade animate-duration-[6000ms] image-full lg:w-96 w-72 lg:shadow-xl shadow-lg lg:m-4 m-2">
+          <div
+            class="card bg-base-100 hidden-until-visible animate-fade animate-duration-[6000ms] image-full lg:w-96 w-72 lg:shadow-xl shadow-lg lg:m-4 m-2"
+          >
             <figure>
               <img src="./images/project-1.jpg" alt="project-1" />
             </figure>
@@ -155,7 +268,9 @@
           </div>
 
           <!-- Project 2 -->
-          <div class="card bg-base-100 hidden-until-visible animate-fade animate-duration-[7000ms] image-full lg:w-96 w-72 lg:shadow-xl shadow-lg lg:m-4 m-2">
+          <div
+            class="card bg-base-100 hidden-until-visible animate-fade animate-duration-[7000ms] image-full lg:w-96 w-72 lg:shadow-xl shadow-lg lg:m-4 m-2"
+          >
             <figure>
               <img src="./images/project-2.jpg" alt="project-1" />
             </figure>
@@ -171,7 +286,9 @@
           </div>
 
           <!-- Project 3 -->
-          <div class="card bg-base-100 hidden-until-visible animate-fade animate-duration-[8000ms] image-full lg:w-96 w-72 lg:shadow-xl shadow-lg lg:m-4 m-2">
+          <div
+            class="card bg-base-100 hidden-until-visible animate-fade animate-duration-[8000ms] image-full lg:w-96 w-72 lg:shadow-xl shadow-lg lg:m-4 m-2"
+          >
             <figure>
               <img src="./images/project-3.jpg" alt="project-1" />
             </figure>
@@ -187,7 +304,9 @@
           </div>
 
           <!-- Project 4 -->
-          <div class="card bg-base-100 hidden-until-visible animate-fade animate-duration-[9000ms] image-full lg:w-96 w-72 lg:shadow-xl shadow-lg lg:m-4 m-2">
+          <div
+            class="card bg-base-100 hidden-until-visible animate-fade animate-duration-[9000ms] image-full lg:w-96 w-72 lg:shadow-xl shadow-lg lg:m-4 m-2"
+          >
             <figure>
               <img src="./images/project-4.jpg" alt="project-1" />
             </figure>
@@ -204,7 +323,9 @@
         </div>
 
         <div class="flex flex-row justify-center">
-          <button class="btn btn-primary btn-outline lg:btn-md btn-sm">Ver más proyectos</button>
+          <button class="btn btn-primary btn-outline lg:btn-md btn-sm">
+            Ver más proyectos
+          </button>
         </div>
       </div>
     </div>
@@ -215,11 +336,13 @@
         class="hero-content w-full flex-col lg:flex-row-reverse justify-around gap-4"
       >
         <div
-          class="text-center lg:text-left flex flex-col justify-center items-center gap-4  hidden-until-visible animate-fade animate-duration-[6000ms]"
+          class="text-center lg:text-left flex flex-col justify-center items-center gap-4 hidden-until-visible animate-fade animate-duration-[6000ms]"
         >
-          <h1 class="lg:text-5xl text-2xl playwrite-font font-bold my-4">Visitanos</h1>
+          <h1 class="lg:text-5xl text-2xl playwrite-font font-bold my-4">
+            Visitanos
+          </h1>
           <iframe
-          class="lg:block hidden"
+            class="lg:block hidden"
             width="400"
             height="200"
             frameborder="0"
@@ -230,7 +353,7 @@
             src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=%20+(Alfredo's)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
           ></iframe>
           <iframe
-          class="lg:hidden"
+            class="lg:hidden"
             width="300"
             height="150"
             frameborder="0"
@@ -246,7 +369,9 @@
             src="https://embedmaps.com/google-maps-authorization/script.js?id=02bc1728b2881c6a96a462312611dbb1334bc891"
           ></script>
         </div>
-        <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl hidden-until-visible animate-fade animate-duration-[6000ms]">
+        <div
+          class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl hidden-until-visible animate-fade animate-duration-[6000ms]"
+        >
           <form class="card-body" id="contact-form">
             <p class="card-title lg:text-2xl text-lg">Contáctanos</p>
             <div class="form-control">
@@ -301,7 +426,9 @@
               ></textarea>
             </div>
             <div class="form-control mt-6">
-              <button class="btn btn-primary btn-outline lg:btn-md btn-sm">Enviar</button>
+              <button class="btn btn-primary btn-outline lg:btn-md btn-sm">
+                Enviar
+              </button>
             </div>
           </form>
         </div>
