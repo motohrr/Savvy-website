@@ -10,7 +10,7 @@ module.exports = {
       'luxury',
       {
         'luxury-light': {
-          primary: '#fde047',
+          primary: '#ca8a04',
           secondary: '#e5e7eb',
           accent: '#F6DCCE',
           neutral: '#F1E8E2',
