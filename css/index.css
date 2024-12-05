@@ -2284,12 +2284,26 @@ html {
   width: 320px;
 }
 
+.btn-xs {
+  height: 1.5rem;
+  min-height: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.75rem;
+}
+
 .btn-sm {
   height: 2rem;
   min-height: 2rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   font-size: 0.875rem;
+}
+
+.btn-square:where(.btn-xs) {
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 0px;
 }
 
 .btn-square:where(.btn-sm) {
@@ -2500,6 +2514,18 @@ html {
   margin-top: 1.5rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -2580,6 +2606,16 @@ html {
 
 .animate-fade {
   animation: fade var(--tw-animate-duration, 1s) var(--tw-animate-easing, ease) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, 1) var(--tw-animate-fill, both);
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse var(--tw-animate-duration, 2s) var(--tw-animate-easing, cubic-bezier(0.4, 0, 0.6, 1)) var(--tw-animate-delay, 0s) var(--tw-animate-iteration, infinite) var(--tw-animate-fill, none);
 }
 
 .grid-cols-1 {
@@ -2795,6 +2831,29 @@ html {
 .visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .md\:btn-sm {
+    height: 2rem;
+    min-height: 2rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-square:where(.md\:btn-sm) {
+    height: 2rem;
+    width: 2rem;
+    padding: 0px;
+  }
+
+  .btn-circle:where(.md\:btn-sm) {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 9999px;
+    padding: 0px;
+  }
 }
 
 @media (min-width: 1024px) {
