@@ -12,3 +12,14 @@
 .norican-font {
   font-family: 'Norican', sans-serif !important;
 }
+
+@font-face {
+  font-family: 'Playwrite';
+  src: url('../resources/fonts/Playwrite-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.playwrite-font {
+  font-family: 'Playwrite', sans-serif !important;
+}

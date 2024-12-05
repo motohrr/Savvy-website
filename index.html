@@ -35,7 +35,7 @@
           >
             <li><a href="#home-section">Inicio</a></li>
             <li><a href="#services-section">Servicios</a></li>
-            <li><a>Proyectos</a></li>
+            <li><a href="#projects-section">Proyectos</a></li>
             <li><a>Contacto</a></li>
           </ul>
         </div>
@@ -45,7 +45,7 @@
         <ul class="menu menu-horizontal px-1">
           <li><a href="#home-section">Inicio</a></li>
           <li><a href="#services-section">Servicios</a></li>
-          <li><a>Proyectos</a></li>
+          <li><a href="#projects-section">Proyectos</a></li>
           <li><a>Contacto</a></li>
         </ul>
       </div>
@@ -77,26 +77,29 @@
 
     <!-- Services 1 -->
     <div class="hero bg-base-200 min-h-screen" id="services-section">
-      <div class="hero-content flex-col lg:flex-row-reverse">
-        <img
-          src="./images/services-1-metal.jpg"
-          class="max-w-sm rounded-lg shadow-2xl"
-        />
-        <div>
-          <h1 class="text-5xl font-bold">Techado de metal</h1>
-          <p class="py-6 text-lg">
-            "Soluciones de techado de metal duraderas, modernas y resistentes,
-            ideales para proteger y realzar cualquier propiedad."
-          </p>
+      <div class="flex flex-col">
+        <p class="text-5xl text-center my-2 playwrite-font">Servicios</p>
+        <div class="hero-content flex-col lg:flex-row-reverse">
+          <img
+            src="./images/services-1-metal.jpg"
+            class="max-w-sm rounded-lg shadow-2xl"
+          />
+          <div>
+            <h1 class="text-3xl font-bold">Techado de metal</h1>
+            <p class="py-6 text-lg">
+              "Soluciones de techado de metal duraderas, modernas y resistentes,
+              ideales para proteger y realzar cualquier propiedad."
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Services 2 -->
-    <div class="hero bg-base-200 min-h-screen" id="services-section">
+    <div class="hero bg-base-500 min-h-screen" id="services-section">
       <div class="hero-content flex-col lg:flex-row-reverse">
         <div>
-          <h1 class="text-5xl font-bold">Techado de tejas</h1>
+          <h1 class="text-3xl font-bold">Techado de tejas</h1>
           <p class="py-6 text-lg">
             "Techado de tejas elegante y resistente, diseñado para brindar
             estilo y protección duradera a tu hogar."
@@ -117,11 +120,87 @@
           class="max-w-sm rounded-lg shadow-2xl"
         />
         <div>
-          <h1 class="text-5xl font-bold">Techado ecológico</h1>
+          <h1 class="text-3xl font-bold">Techado ecológico</h1>
           <p class="py-6 text-lg">
             "Techado ecológico sostenible y eficiente, diseñado para cuidar el
             planeta mientras protege tu hogar."
           </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="hero bg-base-500 min-h-screen" id="projects-section">
+      <div class="hero-content flex flex-col">
+        <p class="playwrite-font text-5xl text-center my-4">Proyectos</p>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Project 1 -->
+          <div class="card bg-base-100 image-full w-96 shadow-xl m-4">
+            <figure>
+              <img src="./images/project-1.jpg" alt="project-1" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">Nueva San Salvador</h2>
+              <p>
+                Techos diseñados para la vida urbana, combinando estilo moderno,
+                eficiencia energética y resistencia para enfrentar los desafíos
+                de la ciudad.
+              </p>
+              <div class="card-actions justify-end"></div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="card bg-base-100 image-full w-96 shadow-xl m-4">
+            <figure>
+              <img src="./images/project-2.jpg" alt="project-1" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">La Libertad Oeste</h2>
+              <p>
+                Soluciones de techado urbano que unen diseño contemporáneo,
+                durabilidad y protección para realzar cualquier espacio en la
+                ciudad.
+              </p>
+              <div class="card-actions justify-end"></div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="card bg-base-100 image-full w-96 shadow-xl m-4">
+            <figure>
+              <img src="./images/project-3.jpg" alt="project-1" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">World Trade center</h2>
+              <p>
+                Techos innovadores para edificios de negocios, combinando
+                estética profesional, eficiencia energética y máxima resistencia
+                para impulsar el éxito empresarial.
+              </p>
+              <div class="card-actions justify-end"></div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="card bg-base-100 image-full w-96 shadow-xl m-4">
+            <figure>
+              <img src="./images/project-4.jpg" alt="project-1" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">Colonia Médica</h2>
+              <p>
+                Techado especializado para colonias médicas, diseñado para
+                garantizar durabilidad, seguridad y un entorno funcional al
+                servicio de la salud.
+              </p>
+              <div class="card-actions justify-end"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-row justify-center">
+          <button class="btn btn-primary">Ver más proyectos</button>
         </div>
       </div>
     </div>
