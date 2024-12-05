@@ -23,3 +23,7 @@
 .playwrite-font {
   font-family: 'Playwrite', sans-serif !important;
 }
+
+.just-validate-error-label {
+  color: red;
+}
