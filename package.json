@@ -1,0 +1,29 @@
+{
+  "name": "savvy-website",
+  "version": "1.0.0",
+  "description": "Simple luxury website using tailwindcss and daisyui",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "build:styles": "npx tailwindcss -i ./resources/styles/index.css -o ./css/index.css --watch"
+  },
+  "keywords": [
+    "savvy",
+    "website",
+    "daisyui",
+    "tailwindcss"
+  ],
+  "author": "motohrr",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "husky": "^9.1.7",
+    "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.16"
+  },
+  "dependencies": {
+    "daisyui": "^4.12.14"
+  }
+}
