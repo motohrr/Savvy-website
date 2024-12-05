@@ -153,3 +153,19 @@ const observer = new IntersectionObserver(
 
 const elements = document.querySelectorAll('.hidden-until-visible');
 elements.forEach((el) => observer.observe(el));
+
+// Event for "request-button"
+const requestButton = document.querySelector('.request-button');
+if (requestButton) {
+  requestButton.addEventListener('click', () => {
+    showToast('Solicitud enviada');
+  });
+}
+
+// Event for "projects-request" button
+const projectsRequestButton = document.getElementById('projects-request');
+if (projectsRequestButton) {
+  projectsRequestButton.addEventListener('click', () => {
+    showToast('Ver más proyectos');
+  });
+}

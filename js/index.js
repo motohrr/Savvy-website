@@ -1,20 +1,20 @@
-function x(n) {
-  return typeof n == 'string' || n instanceof String;
+function x(a) {
+  return typeof a == 'string' || a instanceof String;
 }
-function Z(n) {
+function W(a) {
   var e;
   return (
-    typeof n == 'object' &&
-    n != null &&
-    (n == null || (e = n.constructor) == null ? void 0 : e.name) === 'Object'
+    typeof a == 'object' &&
+    a != null &&
+    (a == null || (e = a.constructor) == null ? void 0 : e.name) === 'Object'
   );
 }
-function ee(n, e) {
+function ie(a, e) {
   return Array.isArray(e)
-    ? ee(n, (t, s) => e.includes(s))
-    : Object.entries(n).reduce((t, s) => {
-        let [i, a] = s;
-        return e(a, i) && (t[i] = a), t;
+    ? ie(a, (t, s) => e.includes(s))
+    : Object.entries(a).reduce((t, s) => {
+        let [i, n] = s;
+        return e(n, i) && (t[i] = n), t;
       }, {});
 }
 const d = {
@@ -24,49 +24,49 @@ const d = {
   RIGHT: 'RIGHT',
   FORCE_RIGHT: 'FORCE_RIGHT'
 };
-function ue(n) {
-  switch (n) {
+function de(a) {
+  switch (a) {
     case d.LEFT:
       return d.FORCE_LEFT;
     case d.RIGHT:
       return d.FORCE_RIGHT;
     default:
-      return n;
+      return a;
   }
 }
-function U(n) {
-  return n.replace(/([.*+?^=!:${}()|[\]/\\])/g, '\\$1');
+function H(a) {
+  return a.replace(/([.*+?^=!:${}()|[\]/\\])/g, '\\$1');
 }
-function R(n, e) {
-  if (e === n) return !0;
+function R(a, e) {
+  if (e === a) return !0;
   const t = Array.isArray(e),
-    s = Array.isArray(n);
+    s = Array.isArray(a);
   let i;
   if (t && s) {
-    if (e.length != n.length) return !1;
-    for (i = 0; i < e.length; i++) if (!R(e[i], n[i])) return !1;
+    if (e.length != a.length) return !1;
+    for (i = 0; i < e.length; i++) if (!R(e[i], a[i])) return !1;
     return !0;
   }
   if (t != s) return !1;
-  if (e && n && typeof e == 'object' && typeof n == 'object') {
-    const a = e instanceof Date,
-      r = n instanceof Date;
-    if (a && r) return e.getTime() == n.getTime();
-    if (a != r) return !1;
+  if (e && a && typeof e == 'object' && typeof a == 'object') {
+    const n = e instanceof Date,
+      r = a instanceof Date;
+    if (n && r) return e.getTime() == a.getTime();
+    if (n != r) return !1;
     const o = e instanceof RegExp,
-      u = n instanceof RegExp;
-    if (o && u) return e.toString() == n.toString();
+      u = a instanceof RegExp;
+    if (o && u) return e.toString() == a.toString();
     if (o != u) return !1;
     const l = Object.keys(e);
     for (i = 0; i < l.length; i++)
-      if (!Object.prototype.hasOwnProperty.call(n, l[i])) return !1;
-    for (i = 0; i < l.length; i++) if (!R(n[l[i]], e[l[i]])) return !1;
+      if (!Object.prototype.hasOwnProperty.call(a, l[i])) return !1;
+    for (i = 0; i < l.length; i++) if (!R(a[l[i]], e[l[i]])) return !1;
     return !0;
-  } else if (e && n && typeof e == 'function' && typeof n == 'function')
-    return e.toString() === n.toString();
+  } else if (e && a && typeof e == 'function' && typeof a == 'function')
+    return e.toString() === a.toString();
   return !1;
 }
-class he {
+class ce {
   constructor(e) {
     for (
       Object.assign(this, e);
@@ -122,55 +122,55 @@ class he {
         : d.LEFT;
   }
 }
-function p(n, e) {
-  return new p.InputMask(n, e);
+function p(a, e) {
+  return new p.InputMask(a, e);
 }
-function te(n) {
-  if (n == null) throw new Error('mask property should be defined');
-  return n instanceof RegExp
+function re(a) {
+  if (a == null) throw new Error('mask property should be defined');
+  return a instanceof RegExp
     ? p.MaskedRegExp
-    : x(n)
+    : x(a)
       ? p.MaskedPattern
-      : n === Date
+      : a === Date
         ? p.MaskedDate
-        : n === Number
+        : a === Number
           ? p.MaskedNumber
-          : Array.isArray(n) || n === Array
+          : Array.isArray(a) || a === Array
             ? p.MaskedDynamic
-            : p.Masked && n.prototype instanceof p.Masked
-              ? n
-              : p.Masked && n instanceof p.Masked
-                ? n.constructor
-                : n instanceof Function
+            : p.Masked && a.prototype instanceof p.Masked
+              ? a
+              : p.Masked && a instanceof p.Masked
+                ? a.constructor
+                : a instanceof Function
                   ? p.MaskedFunction
-                  : (console.warn('Mask not found for mask', n), p.Masked);
+                  : (console.warn('Mask not found for mask', a), p.Masked);
 }
-function L(n) {
-  if (!n) throw new Error('Options in not defined');
+function L(a) {
+  if (!a) throw new Error('Options in not defined');
   if (p.Masked) {
-    if (n.prototype instanceof p.Masked) return { mask: n };
+    if (a.prototype instanceof p.Masked) return { mask: a };
     const { mask: e = void 0, ...t } =
-      n instanceof p.Masked
-        ? { mask: n }
-        : Z(n) && n.mask instanceof p.Masked
-          ? n
+      a instanceof p.Masked
+        ? { mask: a }
+        : W(a) && a.mask instanceof p.Masked
+          ? a
           : {};
     if (e) {
       const s = e.mask;
       return {
-        ...ee(e, (i, a) => !a.startsWith('_')),
+        ...ie(e, (i, n) => !n.startsWith('_')),
         mask: e.constructor,
         _mask: s,
         ...t
       };
     }
   }
-  return Z(n) ? { ...n } : { mask: n };
+  return W(a) ? { ...a } : { mask: a };
 }
-function w(n) {
-  if (p.Masked && n instanceof p.Masked) return n;
-  const e = L(n),
-    t = te(e.mask);
+function w(a) {
+  if (p.Masked && a instanceof p.Masked) return a;
+  const e = L(a),
+    t = re(e.mask);
   if (!t)
     throw new Error(
       'Masked class is not found for provided mask ' +
@@ -184,7 +184,7 @@ function w(n) {
   );
 }
 p.createMask = w;
-class Y {
+class Z {
   get selectionStart() {
     let e;
     try {
@@ -215,10 +215,10 @@ class Y {
     return !1;
   }
 }
-p.MaskElement = Y;
-const W = 90,
-  de = 89;
-class j extends Y {
+p.MaskElement = Z;
+const X = 90,
+  pe = 89;
+class j extends Z {
   constructor(e) {
     super(),
       (this.input = e),
@@ -251,11 +251,11 @@ class j extends Y {
   _onKeydown(e) {
     if (
       this._handlers.redo &&
-      ((e.keyCode === W && e.shiftKey && (e.metaKey || e.ctrlKey)) ||
-        (e.keyCode === de && e.ctrlKey))
+      ((e.keyCode === X && e.shiftKey && (e.metaKey || e.ctrlKey)) ||
+        (e.keyCode === pe && e.ctrlKey))
     )
       return e.preventDefault(), this._handlers.redo(e);
-    if (this._handlers.undo && e.keyCode === W && (e.metaKey || e.ctrlKey))
+    if (this._handlers.undo && e.keyCode === X && (e.metaKey || e.ctrlKey))
       return e.preventDefault(), this._handlers.undo(e);
     e.isComposing || this._handlers.selectionChange(e);
   }
@@ -284,7 +284,7 @@ class j extends Y {
   }
 }
 p.HTMLMaskElement = j;
-class ce extends j {
+class fe extends j {
   constructor(e) {
     super(e), (this.input = e);
   }
@@ -307,7 +307,7 @@ class ce extends j {
   }
 }
 p.HTMLMaskElement = j;
-class se extends j {
+class ne extends j {
   get _unsafeSelectionStart() {
     const e = this.rootElement,
       t = e.getSelection && e.getSelection(),
@@ -328,8 +328,8 @@ class se extends j {
     s.setStart(this.input.firstChild || this.input, e),
       s.setEnd(this.input.lastChild || this.input, t);
     const i = this.rootElement,
-      a = i.getSelection && i.getSelection();
-    a && (a.removeAllRanges(), a.addRange(s));
+      n = i.getSelection && i.getSelection();
+    n && (n.removeAllRanges(), n.addRange(s));
   }
   get value() {
     return this.input.textContent || '';
@@ -338,7 +338,7 @@ class se extends j {
     this.input.textContent = e;
   }
 }
-p.HTMLContenteditableMaskElement = se;
+p.HTMLContenteditableMaskElement = ne;
 class $ {
   constructor() {
     (this.states = []), (this.currentIndex = 0);
@@ -376,16 +376,16 @@ class $ {
   }
 }
 $.MAX_LENGTH = 100;
-class pe {
+class ge {
   constructor(e, t) {
     (this.el =
-      e instanceof Y
+      e instanceof Z
         ? e
         : e.isContentEditable &&
             e.tagName !== 'INPUT' &&
             e.tagName !== 'TEXTAREA'
-          ? new se(e)
-          : new ce(e)),
+          ? new ne(e)
+          : new fe(e)),
       (this.masked = w(t)),
       (this._listeners = {}),
       (this._value = ''),
@@ -415,7 +415,7 @@ class pe {
   }
   set mask(e) {
     if (this.maskEquals(e)) return;
-    if (!(e instanceof p.Masked) && this.masked.constructor === te(e)) {
+    if (!(e instanceof p.Masked) && this.masked.constructor === re(e)) {
       this.masked.updateOptions({ mask: e });
       return;
     }
@@ -505,7 +505,7 @@ class pe {
     const t = this.masked.unmaskedValue,
       s = this.masked.value,
       i = this.masked.rawInputValue,
-      a = this.displayValue,
+      n = this.displayValue,
       r =
         this.unmaskedValue !== t ||
         this.value !== s ||
@@ -513,7 +513,7 @@ class pe {
     (this._unmaskedValue = t),
       (this._value = s),
       (this._rawInputValue = i),
-      this.el.value !== a && (this.el.value = a),
+      this.el.value !== n && (this.el.value = n),
       e === 'auto' ? this.alignCursor() : e != null && (this.cursorPos = e),
       r && this._fireChangeEvents(),
       !this._historyChanging &&
@@ -526,10 +526,10 @@ class pe {
   updateOptions(e) {
     const { mask: t, ...s } = e,
       i = !this.maskEquals(t),
-      a = this.masked.optionsIsChanged(s);
+      n = this.masked.optionsIsChanged(s);
     i && (this.mask = t),
-      a && this.masked.updateOptions(s),
-      (i || a) && this.updateControl();
+      n && this.masked.updateOptions(s),
+      (i || n) && this.updateControl();
   }
   updateCursor(e) {
     e != null && ((this.cursorPos = e), this._delayUpdateCursor(e));
@@ -574,7 +574,7 @@ class pe {
   }
   _onInput(e) {
     (this._inputEvent = e), this._abortUpdateCursor();
-    const t = new he({
+    const t = new ce({
         value: this.el.value,
         cursorPos: this.cursorPos,
         oldValue: this.displayValue,
@@ -588,9 +588,9 @@ class pe {
         t.removeDirection,
         { input: !0, raw: !0 }
       ).offset,
-      a = s === this.masked.rawInputValue ? t.removeDirection : d.NONE;
-    let r = this.masked.nearestInputPos(t.startChangePos + i, a);
-    a !== d.NONE && (r = this.masked.nearestInputPos(r, d.NONE)),
+      n = s === this.masked.rawInputValue ? t.removeDirection : d.NONE;
+    let r = this.masked.nearestInputPos(t.startChangePos + i, n);
+    n !== d.NONE && (r = this.masked.nearestInputPos(r, d.NONE)),
       this.updateControl(r),
       delete this._inputEvent;
   }
@@ -627,7 +627,7 @@ class pe {
     this._unbindEvents(), (this._listeners.length = 0), delete this.el;
   }
 }
-p.InputMask = pe;
+p.InputMask = ge;
 class f {
   static normalize(e) {
     return Array.isArray(e) ? e : [e, new f()];
@@ -798,29 +798,29 @@ class k {
   _appendChar(e, t, s) {
     t === void 0 && (t = {});
     const i = this.state;
-    let a;
+    let n;
     if (
-      (([e, a] = this.doPrepareChar(e, t)),
+      (([e, n] = this.doPrepareChar(e, t)),
       e &&
-        ((a = a.aggregate(this._appendCharRaw(e, t))),
-        !a.rawInserted && this.autofix === 'pad'))
+        ((n = n.aggregate(this._appendCharRaw(e, t))),
+        !n.rawInserted && this.autofix === 'pad'))
     ) {
       const r = this.state;
       this.state = i;
       let o = this.pad(t);
       const u = this._appendCharRaw(e, t);
       (o = o.aggregate(u)),
-        u.rawInserted || o.equals(a) ? (a = o) : (this.state = r);
+        u.rawInserted || o.equals(n) ? (n = o) : (this.state = r);
     }
-    if (a.inserted) {
+    if (n.inserted) {
       let r,
         o = this.doValidate(t) !== !1;
       if (o && s != null) {
         const u = this.state;
         if (this.overwrite === !0) {
           r = s.state;
-          for (let h = 0; h < a.rawInserted.length; ++h)
-            s.unshift(this.displayValue.length - a.tailShift);
+          for (let h = 0; h < n.rawInserted.length; ++h)
+            s.unshift(this.displayValue.length - n.tailShift);
         }
         let l = this.appendTail(s);
         if (
@@ -828,15 +828,15 @@ class k {
           !(o && l.inserted) && this.overwrite === 'shift')
         ) {
           (this.state = u), (r = s.state);
-          for (let h = 0; h < a.rawInserted.length; ++h) s.shift();
+          for (let h = 0; h < n.rawInserted.length; ++h) s.shift();
           (l = this.appendTail(s)),
             (o = l.rawInserted.length === s.toString().length);
         }
         o && l.inserted && (this.state = u);
       }
-      o || ((a = new f()), (this.state = i), s && r && (s.state = r));
+      o || ((n = new f()), (this.state = i), s && r && (s.state = r));
     }
-    return a;
+    return n;
   }
   _appendPlaceholder() {
     return new f();
@@ -848,21 +848,21 @@ class k {
     if (!x(e)) throw new Error('value should be string');
     const i = x(s) ? new y(String(s)) : s;
     t != null && t.tail && (t._beforeTailState = this.state);
-    let a;
-    [e, a] = this.doPrepare(e, t);
+    let n;
+    [e, n] = this.doPrepare(e, t);
     for (let r = 0; r < e.length; ++r) {
       const o = this._appendChar(e[r], t, i);
       if (!o.rawInserted && !this.doSkipInvalid(e[r], t, i)) break;
-      a.aggregate(o);
+      n.aggregate(o);
     }
     return (
       (this.eager === !0 || this.eager === 'append') &&
         t != null &&
         t.input &&
         e &&
-        a.aggregate(this._appendEager()),
-      i != null && (a.tailShift += this.appendTail(i).tailShift),
-      a
+        n.aggregate(this._appendEager()),
+      i != null && (n.tailShift += this.appendTail(i).tailShift),
+      n
     );
   }
   remove(e, t) {
@@ -922,15 +922,15 @@ class k {
   doCommit() {
     this.commit && this.commit(this.value, this);
   }
-  splice(e, t, s, i, a) {
+  splice(e, t, s, i, n) {
     s === void 0 && (s = ''),
       i === void 0 && (i = d.NONE),
-      a === void 0 && (a = { input: !0 });
+      n === void 0 && (n = { input: !0 });
     const r = e + t,
       o = this.extractTail(r),
       u = this.eager === !0 || this.eager === 'remove';
     let l;
-    u && ((i = ue(i)), (l = this.extractInput(0, r, { raw: !0 })));
+    u && ((i = de(i)), (l = this.extractInput(0, r, { raw: !0 })));
     let h = e;
     const c = new f();
     if (
@@ -945,7 +945,7 @@ class k {
         for (; l === this.rawInputValue && (m = this.displayValue.length); )
           c.aggregate(new f({ tailShift: -1 })).aggregate(this.remove(m - 1));
       } else i === d.FORCE_RIGHT && o.unshift();
-    return c.aggregate(this.append(s, a, o));
+    return c.aggregate(this.append(s, n, o));
   }
   maskEquals(e) {
     return this.mask === e;
@@ -1004,12 +1004,12 @@ class V {
     const t = new f();
     for (let s = 0; s < this.chunks.length; ++s) {
       const i = this.chunks[s],
-        a = e._mapPosToBlock(e.displayValue.length),
+        n = e._mapPosToBlock(e.displayValue.length),
         r = i.stop;
       let o;
       if (
         (r != null &&
-          (!a || a.index <= r) &&
+          (!n || n.index <= r) &&
           ((i instanceof V || e._stops.indexOf(r) >= 0) &&
             t.aggregate(e._appendPlaceholder(r)),
           (o = i instanceof V && e._blocks[r])),
@@ -1035,8 +1035,8 @@ class V {
     const { chunks: t, ...s } = e;
     Object.assign(this, s),
       (this.chunks = t.map((i) => {
-        const a = 'chunks' in i ? new V() : new y();
-        return (a.state = i), a;
+        const n = 'chunks' in i ? new V() : new y();
+        return (n.state = i), n;
       }));
   }
   unshift(e) {
@@ -1045,12 +1045,12 @@ class V {
     let s = 0;
     for (; s < this.chunks.length; ) {
       const i = this.chunks[s],
-        a = i.unshift(t);
+        n = i.unshift(t);
       if (i.toString()) {
-        if (!a) break;
+        if (!n) break;
         ++s;
       } else this.chunks.splice(s, 1);
-      if (a) return a;
+      if (n) return n;
     }
     return '';
   }
@@ -1069,7 +1069,7 @@ class V {
     return '';
   }
 }
-class fe {
+class me {
   constructor(e, t) {
     (this.masked = e), (this._log = []);
     const { offset: s, index: i } =
@@ -1180,7 +1180,7 @@ class fe {
     });
   }
 }
-class ie {
+class ae {
   constructor(e) {
     Object.assign(this, e), (this._value = ''), (this.isFixed = !0);
   }
@@ -1247,14 +1247,14 @@ class ie {
   _appendChar(e, t) {
     if ((t === void 0 && (t = {}), this.isFilled)) return new f();
     const s = this.eager === !0 || this.eager === 'append',
-      a =
+      n =
         this.char === e &&
         (this.isUnmasking || t.input || t.raw) &&
         (!t.raw || !s) &&
         !t.tail,
-      r = new f({ inserted: this.char, rawInserted: a ? this.char : '' });
+      r = new f({ inserted: this.char, rawInserted: n ? this.char : '' });
     return (
-      (this._value = this.char), (this._isRawInput = a && (t.raw || t.input)), r
+      (this._value = this.char), (this._isRawInput = n && (t.raw || t.input)), r
     );
   }
   _appendEager() {
@@ -1291,7 +1291,7 @@ class P {
       parent: t,
       isOptional: s,
       placeholderChar: i,
-      displayChar: a,
+      displayChar: n,
       lazy: r,
       eager: o,
       ...u
@@ -1301,7 +1301,7 @@ class P {
         parent: t,
         isOptional: s,
         placeholderChar: i,
-        displayChar: a,
+        displayChar: n,
         lazy: r,
         eager: o
       });
@@ -1382,17 +1382,17 @@ class P {
     t === void 0 && (t = d.NONE);
     const s = 0,
       i = this.value.length,
-      a = Math.min(Math.max(e, s), i);
+      n = Math.min(Math.max(e, s), i);
     switch (t) {
       case d.LEFT:
       case d.FORCE_LEFT:
-        return this.isComplete ? a : s;
+        return this.isComplete ? n : s;
       case d.RIGHT:
       case d.FORCE_RIGHT:
-        return this.isComplete ? a : i;
+        return this.isComplete ? n : i;
       case d.NONE:
       default:
-        return a;
+        return n;
     }
   }
   totalInputPositions(e, t) {
@@ -1440,7 +1440,7 @@ P.DEFAULT_DEFINITIONS = {
   a: /[\u0041-\u005A\u0061-\u007A\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0\u08A2-\u08AC\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097F\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C33\u0C35-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191C\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA697\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA793\uA7A0-\uA7AA\uA7F8-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA80-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/,
   '*': /./
 };
-class ge extends k {
+class ve extends k {
   updateOptions(e) {
     super.updateOptions(e);
   }
@@ -1449,7 +1449,7 @@ class ge extends k {
     t && (e.validate = (s) => s.search(t) >= 0), super._update(e);
   }
 }
-p.MaskedRegExp = ge;
+p.MaskedRegExp = ve;
 class b extends k {
   constructor(e) {
     super({
@@ -1480,9 +1480,9 @@ class b extends k {
     if (!t || !e) return;
     let s = !1,
       i = !1;
-    for (let a = 0; a < t.length; ++a) {
+    for (let n = 0; n < t.length; ++n) {
       if (this.blocks) {
-        const l = t.slice(a),
+        const l = t.slice(n),
           h = Object.keys(this.blocks).filter((m) => l.indexOf(m) === 0);
         h.sort((m, _) => _.length - m.length);
         const c = h[0];
@@ -1505,11 +1505,11 @@ class b extends k {
             m && (this.exposeBlock = E),
             this._maskedBlocks[c] || (this._maskedBlocks[c] = []),
             this._maskedBlocks[c].push(this._blocks.length - 1)),
-            (a += c.length - 1);
+            (n += c.length - 1);
           continue;
         }
       }
-      let r = t[a],
+      let r = t[n],
         o = r in e;
       if (r === b.STOP_CHAR) {
         this._stops.push(this._blocks.length);
@@ -1524,7 +1524,7 @@ class b extends k {
         continue;
       }
       if (r === b.ESCAPE_CHAR) {
-        if ((++a, (r = t[a]), !r)) break;
+        if ((++n, (r = t[n]), !r)) break;
         o = !1;
       }
       const u = o
@@ -1537,7 +1537,7 @@ class b extends k {
             ...L(e[r]),
             parent: this
           })
-        : new ie({ char: r, eager: this.eager, isUnmasking: s });
+        : new ae({ char: r, eager: this.eager, isUnmasking: s });
       this._blocks.push(u);
     }
   }
@@ -1550,7 +1550,7 @@ class b extends k {
       return;
     }
     const { _blocks: t, ...s } = e;
-    this._blocks.forEach((i, a) => (i.state = t[a])), (super.state = s);
+    this._blocks.forEach((i, n) => (i.state = t[n])), (super.state = s);
   }
   reset() {
     super.reset(), this._blocks.forEach((e) => e.reset());
@@ -1628,9 +1628,9 @@ class b extends k {
     if (s == null) return t;
     this._blocks[s].isFilled && ++s;
     for (let i = s; i < this._blocks.length; ++i) {
-      const a = this._blocks[i]._appendEager();
-      if (!a.inserted) break;
-      t.aggregate(a);
+      const n = this._blocks[i]._appendEager();
+      if (!n.inserted) break;
+      t.aggregate(n);
     }
     return t;
   }
@@ -1640,13 +1640,13 @@ class b extends k {
       i = new f();
     if (!s) return i;
     for (let r = s.index, o; (o = this._blocks[r]); ++r) {
-      var a;
+      var n;
       const u = o._appendChar(e, {
         ...t,
         _beforeTailState:
-          (a = t._beforeTailState) == null || (a = a._blocks) == null
+          (n = t._beforeTailState) == null || (n = n._blocks) == null
             ? void 0
-            : a[r]
+            : n[r]
       });
       if ((i.aggregate(u), u.consumed)) break;
     }
@@ -1657,11 +1657,11 @@ class b extends k {
     const s = new V();
     return (
       e === t ||
-        this._forEachBlocksInRange(e, t, (i, a, r, o) => {
+        this._forEachBlocksInRange(e, t, (i, n, r, o) => {
           const u = i.extractTail(r, o);
-          (u.stop = this._findStopBefore(a)),
-            (u.from = this._blockStartPos(a)),
-            u instanceof V && (u.blockIndex = a),
+          (u.stop = this._findStopBefore(n)),
+            (u.from = this._blockStartPos(n)),
+            u instanceof V && (u.blockIndex = n),
             s.extend(u);
         }),
       s
@@ -1677,8 +1677,8 @@ class b extends k {
       return '';
     let i = '';
     return (
-      this._forEachBlocksInRange(e, t, (a, r, o, u) => {
-        i += a.extractInput(o, u, s);
+      this._forEachBlocksInRange(e, t, (n, r, o, u) => {
+        i += n.extractInput(o, u, s);
       }),
       i
     );
@@ -1698,9 +1698,9 @@ class b extends k {
     const s = this._mapPosToBlock(this.displayValue.length);
     if (!s) return t;
     const i = s.index,
-      a = e ?? this._blocks.length;
+      n = e ?? this._blocks.length;
     return (
-      this._blocks.slice(i, a).forEach((r) => {
+      this._blocks.slice(i, n).forEach((r) => {
         if (!r.lazy || e != null) {
           var o;
           t.aggregate(
@@ -1715,9 +1715,9 @@ class b extends k {
     let t = '';
     for (let s = 0; s < this._blocks.length; ++s) {
       const i = this._blocks[s],
-        a = t.length;
+        n = t.length;
       if (((t += i.displayValue), e <= t.length))
-        return { index: s, offset: e - a };
+        return { index: s, offset: e - n };
     }
   }
   _blockStartPos(e) {
@@ -1729,14 +1729,14 @@ class b extends k {
     t === void 0 && (t = this.displayValue.length);
     const i = this._mapPosToBlock(e);
     if (i) {
-      const a = this._mapPosToBlock(t),
-        r = a && i.index === a.index,
+      const n = this._mapPosToBlock(t),
+        r = n && i.index === n.index,
         o = i.offset,
-        u = a && r ? a.offset : this._blocks[i.index].displayValue.length;
-      if ((s(this._blocks[i.index], i.index, o, u), a && !r)) {
-        for (let l = i.index + 1; l < a.index; ++l)
+        u = n && r ? n.offset : this._blocks[i.index].displayValue.length;
+      if ((s(this._blocks[i.index], i.index, o, u), n && !r)) {
+        for (let l = i.index + 1; l < n.index; ++l)
           s(this._blocks[l], l, 0, this._blocks[l].displayValue.length);
-        s(this._blocks[a.index], a.index, 0, a.offset);
+        s(this._blocks[n.index], n.index, 0, n.offset);
       }
     }
   }
@@ -1744,7 +1744,7 @@ class b extends k {
     e === void 0 && (e = 0), t === void 0 && (t = this.displayValue.length);
     const s = super.remove(e, t);
     return (
-      this._forEachBlocksInRange(e, t, (i, a, r, o) => {
+      this._forEachBlocksInRange(e, t, (i, n, r, o) => {
         s.aggregate(i.remove(r, o));
       }),
       s
@@ -1752,7 +1752,7 @@ class b extends k {
   }
   nearestInputPos(e, t) {
     if ((t === void 0 && (t = d.NONE), !this._blocks.length)) return 0;
-    const s = new fe(this, e);
+    const s = new me(this, e);
     if (t === d.NONE)
       return s.pushRightBeforeInput() || (s.popState(), s.pushLeftBeforeInput())
         ? s.pos
@@ -1799,7 +1799,7 @@ class b extends k {
     e === void 0 && (e = 0), t === void 0 && (t = this.displayValue.length);
     let s = 0;
     return (
-      this._forEachBlocksInRange(e, t, (i, a, r, o) => {
+      this._forEachBlocksInRange(e, t, (i, n, r, o) => {
         s += i.totalInputPositions(r, o);
       }),
       s
@@ -1826,7 +1826,7 @@ b.DEFAULTS = { ...k.DEFAULTS, lazy: !0, placeholderChar: '_' };
 b.STOP_CHAR = '`';
 b.ESCAPE_CHAR = '\\';
 b.InputDefinition = P;
-b.FixedDefinition = ie;
+b.FixedDefinition = ae;
 p.MaskedPattern = b;
 class O extends b {
   get _matchFrom() {
@@ -1843,13 +1843,13 @@ class O extends b {
       to: t = this.to || 0,
       from: s = this.from || 0,
       maxLength: i = this.maxLength || 0,
-      autofix: a = this.autofix,
+      autofix: n = this.autofix,
       ...r
     } = e;
     (this.to = t),
       (this.from = s),
       (this.maxLength = Math.max(String(t).length, i)),
-      (this.autofix = a);
+      (this.autofix = n);
     const o = String(this.from).padStart(this.maxLength, '0'),
       u = String(this.to).padStart(this.maxLength, '0');
     let l = 0;
@@ -1864,9 +1864,9 @@ class O extends b {
   boundaries(e) {
     let t = '',
       s = '';
-    const [, i, a] = e.match(/^(\D*)(\d*)(\D*)/) || [];
+    const [, i, n] = e.match(/^(\D*)(\d*)(\D*)/) || [];
     return (
-      a && ((t = '0'.repeat(i.length) + a), (s = '9'.repeat(i.length) + a)),
+      n && ((t = '0'.repeat(i.length) + n), (s = '9'.repeat(i.length) + n)),
       (t = t.padEnd(this.maxLength, '0')),
       (s = s.padEnd(this.maxLength, '9')),
       [t, s]
@@ -1889,10 +1889,10 @@ class O extends b {
       return super._appendCharRaw(e, t);
     const s = String(this.from).padStart(this.maxLength, '0'),
       i = String(this.to).padStart(this.maxLength, '0'),
-      [a, r] = this.boundaries(this.value + e);
+      [n, r] = this.boundaries(this.value + e);
     return Number(r) < this.from
       ? super._appendCharRaw(s[this.value.length], t)
-      : Number(a) > this.to
+      : Number(n) > this.to
         ? !t.tail &&
           this.autofix === 'pad' &&
           this.value.length + 1 < this.maxLength
@@ -1905,9 +1905,9 @@ class O extends b {
   doValidate(e) {
     const t = this.value;
     if (t.search(/[^0]/) === -1 && t.length <= this._matchFrom) return !0;
-    const [i, a] = this.boundaries(t);
+    const [i, n] = this.boundaries(t);
     return (
-      this.from <= Number(a) && Number(i) <= this.to && super.doValidate(e)
+      this.from <= Number(n) && Number(i) <= this.to && super.doValidate(e)
     );
   }
   pad(e) {
@@ -1917,14 +1917,14 @@ class O extends b {
       i = this.maxLength - this.value.length;
     if (i) {
       this.reset();
-      for (let a = 0; a < i; ++a) t.aggregate(super._appendCharRaw('0', e));
-      s.split('').forEach((a) => this._appendCharRaw(a));
+      for (let n = 0; n < i; ++n) t.aggregate(super._appendCharRaw('0', e));
+      s.split('').forEach((n) => this._appendCharRaw(n));
     }
     return t;
   }
 }
 p.MaskedRange = O;
-const me = 'd{.}`m{.}`Y';
+const ke = 'd{.}`m{.}`Y';
 class S extends b {
   static extractPatternOptions(e) {
     const { mask: t, pattern: s, ...i } = e;
@@ -1937,7 +1937,7 @@ class S extends b {
     super.updateOptions(e);
   }
   _update(e) {
-    const { mask: t, pattern: s, blocks: i, ...a } = { ...S.DEFAULTS, ...e },
+    const { mask: t, pattern: s, blocks: i, ...n } = { ...S.DEFAULTS, ...e },
       r = Object.assign({}, S.GET_DEFAULT_BLOCKS());
     e.min && (r.Y.from = e.min.getFullYear()),
       e.max && (r.Y.to = e.max.getFullYear()),
@@ -1949,7 +1949,7 @@ class S extends b {
         r.m.from === r.m.to &&
           ((r.d.from = e.min.getDate()), (r.d.to = e.max.getDate()))),
       Object.assign(r, this.blocks, i),
-      super._update({ ...a, mask: x(t) ? t : s, blocks: r });
+      super._update({ ...n, mask: x(t) ? t : s, blocks: r });
   }
   doValidate(e) {
     const t = this.date;
@@ -1992,16 +1992,16 @@ S.GET_DEFAULT_BLOCKS = () => ({
 S.DEFAULTS = {
   ...b.DEFAULTS,
   mask: Date,
-  pattern: me,
-  format: (n, e) => {
-    if (!n) return '';
-    const t = String(n.getDate()).padStart(2, '0'),
-      s = String(n.getMonth() + 1).padStart(2, '0'),
-      i = n.getFullYear();
+  pattern: ke,
+  format: (a, e) => {
+    if (!a) return '';
+    const t = String(a.getDate()).padStart(2, '0'),
+      s = String(a.getMonth() + 1).padStart(2, '0'),
+      i = a.getFullYear();
     return [t, s, i].join('.');
   },
-  parse: (n, e) => {
-    const [t, s, i] = n.split('.').map(Number);
+  parse: (a, e) => {
+    const [t, s, i] = a.split('.').map(Number);
     return new Date(i, s - 1, t);
   }
 };
@@ -2020,13 +2020,13 @@ class G extends k {
         (this.compiledMasks = Array.isArray(e.mask)
           ? e.mask.map((t) => {
               const { expose: s, ...i } = L(t),
-                a = w({
+                n = w({
                   overwrite: this._overwrite,
                   eager: this._eager,
                   skipInvalid: this._skipInvalid,
                   ...i
                 });
-              return s && (this.exposeMask = a), a;
+              return s && (this.exposeMask = n), n;
             })
           : []));
   }
@@ -2047,12 +2047,12 @@ class G extends k {
         t.tail && t._beforeTailState != null
           ? t._beforeTailState._value
           : this.value,
-      a = this.rawInputValue,
+      n = this.rawInputValue,
       r =
         t.tail && t._beforeTailState != null
           ? t._beforeTailState._rawInputValue
-          : a,
-      o = a.slice(r.length),
+          : n,
+      o = n.slice(r.length),
       u = this.currentMask,
       l = new f(),
       h = u == null ? void 0 : u.state;
@@ -2121,9 +2121,9 @@ class G extends k {
     t === void 0 && (t = {});
     let [s, i] = super.doPrepare(e, t);
     if (this.currentMask) {
-      let a;
-      ([s, a] = super.doPrepare(s, this.currentMaskFlags(t))),
-        (i = i.aggregate(a));
+      let n;
+      ([s, n] = super.doPrepare(s, this.currentMaskFlags(t))),
+        (i = i.aggregate(n));
     }
     return [s, i];
   }
@@ -2131,9 +2131,9 @@ class G extends k {
     t === void 0 && (t = {});
     let [s, i] = super.doPrepareChar(e, t);
     if (this.currentMask) {
-      let a;
-      ([s, a] = super.doPrepareChar(s, this.currentMaskFlags(t))),
-        (i = i.aggregate(a));
+      let n;
+      ([s, n] = super.doPrepareChar(s, this.currentMaskFlags(t))),
+        (i = i.aggregate(n));
     }
     return [s, i];
   }
@@ -2221,10 +2221,10 @@ class G extends k {
     };
   }
   set state(e) {
-    const { compiledMasks: t, currentMaskRef: s, currentMask: i, ...a } = e;
+    const { compiledMasks: t, currentMaskRef: s, currentMask: i, ...n } = e;
     t && this.compiledMasks.forEach((r, o) => (r.state = t[o])),
       s != null && ((this.currentMask = s), (this.currentMask.state = i)),
-      (super.state = a);
+      (super.state = n);
   }
   extractInput(e, t, s) {
     return this.currentMask ? this.currentMask.extractInput(e, t, s) : '';
@@ -2270,8 +2270,8 @@ class G extends k {
     return Array.isArray(e)
       ? this.compiledMasks.every((t, s) => {
           if (!e[s]) return;
-          const { mask: i, ...a } = e[s];
-          return R(t, a) && t.maskEquals(i);
+          const { mask: i, ...n } = e[s];
+          return R(t, n) && t.maskEquals(i);
         })
       : super.maskEquals(e);
   }
@@ -2282,10 +2282,10 @@ class G extends k {
 }
 G.DEFAULTS = {
   ...k.DEFAULTS,
-  dispatch: (n, e, t, s) => {
+  dispatch: (a, e, t, s) => {
     if (!e.compiledMasks.length) return;
     const i = e.rawInputValue,
-      a = e.compiledMasks.map((r, o) => {
+      n = e.compiledMasks.map((r, o) => {
         const u = e.currentMask === r,
           l = u
             ? r.displayValue.length
@@ -2294,7 +2294,7 @@ G.DEFAULTS = {
           r.rawInputValue !== i
             ? (r.reset(), r.append(i, { raw: !0 }))
             : u || r.remove(l),
-          r.append(n, e.currentMaskFlags(t)),
+          r.append(a, e.currentMaskFlags(t)),
           r.appendTail(s),
           {
             index: o,
@@ -2310,11 +2310,11 @@ G.DEFAULTS = {
         );
       });
     return (
-      a.sort(
+      n.sort(
         (r, o) =>
           o.weight - r.weight || o.totalInputPositions - r.totalInputPositions
       ),
-      e.compiledMasks[a[0].index]
+      e.compiledMasks[n[0].index]
     );
   }
 };
@@ -2330,9 +2330,9 @@ class q extends b {
     const { enum: t, ...s } = e;
     if (t) {
       const i = t.map((o) => o.length),
-        a = Math.min(...i),
-        r = Math.max(...i) - a;
-      (s.mask = '*'.repeat(a)),
+        n = Math.min(...i),
+        r = Math.max(...i) - n;
+      (s.mask = '*'.repeat(n)),
         r && (s.mask += '[' + '*'.repeat(r) + ']'),
         (this.enum = t);
     }
@@ -2344,8 +2344,8 @@ class q extends b {
         this.nearestInputPos(0, d.FORCE_RIGHT),
         this.value.length
       ),
-      i = this.enum.filter((a) =>
-        this.matchValue(a, this.unmaskedValue + e, s)
+      i = this.enum.filter((n) =>
+        this.matchValue(n, this.unmaskedValue + e, s)
       );
     if (i.length) {
       i.length === 1 &&
@@ -2355,14 +2355,14 @@ class q extends b {
             u === r.value ||
             (r.reset(), r._appendChar(u, t));
         });
-      const a = super._appendCharRaw(i[0][this.value.length], t);
+      const n = super._appendCharRaw(i[0][this.value.length], t);
       return (
         i.length === 1 &&
           i[0]
             .slice(this.unmaskedValue.length)
             .split('')
-            .forEach((r) => a.aggregate(super._appendCharRaw(r))),
-        a
+            .forEach((r) => n.aggregate(super._appendCharRaw(r))),
+        n
       );
     }
     return new f({ skip: !this.isComplete });
@@ -2395,16 +2395,16 @@ class q extends b {
       );
       --i
     );
-    const a = super.remove(i, t);
-    return (a.tailShift += i - e), a;
+    const n = super.remove(i, t);
+    return (n.tailShift += i - e), n;
   }
   get isComplete() {
     return this.enum.indexOf(this.value) >= 0;
   }
 }
-q.DEFAULTS = { ...b.DEFAULTS, matchValue: (n, e, t) => n.indexOf(e, t) === t };
+q.DEFAULTS = { ...b.DEFAULTS, matchValue: (a, e, t) => a.indexOf(e, t) === t };
 p.MaskedEnum = q;
-class ve extends k {
+class be extends k {
   updateOptions(e) {
     super.updateOptions(e);
   }
@@ -2412,8 +2412,8 @@ class ve extends k {
     super._update({ ...e, validate: e.mask });
   }
 }
-p.MaskedFunction = ve;
-var re;
+p.MaskedFunction = be;
+var oe;
 class F extends k {
   constructor(e) {
     super({ ...F.DEFAULTS, ...e });
@@ -2429,15 +2429,15 @@ class F extends k {
       t = '\\d*',
       s =
         (this.scale
-          ? '(' + U(this.radix) + '\\d{0,' + this.scale + '})?'
+          ? '(' + H(this.radix) + '\\d{0,' + this.scale + '})?'
           : '') + '$';
     (this._numberRegExp = new RegExp(e + t + s)),
       (this._mapToRadixRegExp = new RegExp(
-        '[' + this.mapToRadix.map(U).join('') + ']',
+        '[' + this.mapToRadix.map(H).join('') + ']',
         'g'
       )),
       (this._thousandsSeparatorRegExp = new RegExp(
-        U(this.thousandsSeparator),
+        H(this.thousandsSeparator),
         'g'
       ));
   }
@@ -2501,7 +2501,7 @@ class F extends k {
         t.tail && t._beforeTailState ? t._beforeTailState._value : this._value,
       i = this._separatorsCountFromSlice(s);
     this._value = this._removeThousandsSeparators(this.value);
-    const a = this._value;
+    const n = this._value;
     this._value += e;
     const r = this.number;
     let o = !isNaN(r),
@@ -2522,18 +2522,18 @@ class F extends k {
                 F.UNMASKED_RADIX,
                 this.radix
               )),
-              u || (u = a === this._value && !t.tail))
+              u || (u = n === this._value && !t.tail))
             : (o = !1)),
         o && (o = !!this._value.match(this._numberRegExp));
     }
     let l;
     o
       ? (l = new f({
-          inserted: this._value.slice(a.length),
+          inserted: this._value.slice(n.length),
           rawInserted: u ? '' : e,
           skip: u
         }))
-      : ((this._value = a), (l = new f())),
+      : ((this._value = n), (l = new f())),
       (this._value = this._insertThousandsSeparators(this._value));
     const h =
         t.tail && t._beforeTailState ? t._beforeTailState._value : this._value,
@@ -2560,12 +2560,12 @@ class F extends k {
       ([e, t] = this._adjustRangeWithSeparators(e, t));
     const s = this.value.slice(0, e),
       i = this.value.slice(t),
-      a = this._separatorsCount(s.length);
+      n = this._separatorsCount(s.length);
     this._value = this._insertThousandsSeparators(
       this._removeThousandsSeparators(s + i)
     );
     const r = this._separatorsCountFromSlice(s);
-    return new f({ tailShift: (r - a) * this.thousandsSeparator.length });
+    return new f({ tailShift: (r - n) * this.thousandsSeparator.length });
   }
   nearestInputPos(e, t) {
     if (!this.thousandsSeparator) return e;
@@ -2607,7 +2607,7 @@ class F extends k {
   _normalizeZeros(e) {
     const t = this._removeThousandsSeparators(e).split(this.radix);
     return (
-      (t[0] = t[0].replace(/^(\D*)(0*)(\d*)/, (s, i, a, r) => i + r)),
+      (t[0] = t[0].replace(/^(\D*)(0*)(\d*)/, (s, i, n, r) => i + r)),
       e.length && !/\d$/.test(t[0]) && (t[0] = t[0] + '0'),
       t.length > 1 &&
         ((t[1] = t[1].replace(/0*$/, '')), t[1].length || (t.length = 1)),
@@ -2675,7 +2675,7 @@ class F extends k {
     );
   }
 }
-re = F;
+oe = F;
 F.UNMASKED_RADIX = '.';
 F.EMPTY_VALUES = [...k.EMPTY_VALUES, 0];
 F.DEFAULTS = {
@@ -2683,30 +2683,30 @@ F.DEFAULTS = {
   mask: Number,
   radix: ',',
   thousandsSeparator: '',
-  mapToRadix: [re.UNMASKED_RADIX],
+  mapToRadix: [oe.UNMASKED_RADIX],
   min: Number.MIN_SAFE_INTEGER,
   max: Number.MAX_SAFE_INTEGER,
   scale: 2,
   normalizeZeros: !0,
   padFractionalZeros: !1,
   parse: Number,
-  format: (n) =>
-    n.toLocaleString('en-US', { useGrouping: !1, maximumFractionDigits: 20 })
+  format: (a) =>
+    a.toLocaleString('en-US', { useGrouping: !1, maximumFractionDigits: 20 })
 };
 p.MaskedNumber = F;
-const z = { MASKED: 'value', UNMASKED: 'unmaskedValue', TYPED: 'typedValue' };
-function ae(n, e, t) {
-  e === void 0 && (e = z.MASKED), t === void 0 && (t = z.MASKED);
-  const s = w(n);
-  return (i) => s.runIsolated((a) => ((a[e] = i), a[t]));
+const K = { MASKED: 'value', UNMASKED: 'unmaskedValue', TYPED: 'typedValue' };
+function le(a, e, t) {
+  e === void 0 && (e = K.MASKED), t === void 0 && (t = K.MASKED);
+  const s = w(a);
+  return (i) => s.runIsolated((n) => ((n[e] = i), n[t]));
 }
-function ke(n, e, t, s) {
-  return ae(e, t, s)(n);
+function _e(a, e, t, s) {
+  return le(e, t, s)(a);
 }
-p.PIPE_TYPE = z;
-p.createPipe = ae;
-p.pipe = ke;
-class be extends b {
+p.PIPE_TYPE = K;
+p.createPipe = le;
+p.pipe = _e;
+class Fe extends b {
   get repeatFrom() {
     var e;
     return (e = Array.isArray(this.repeat)
@@ -2732,11 +2732,11 @@ class be extends b {
   }
   _update(e) {
     var t, s, i;
-    const { repeat: a, ...r } = L(e);
+    const { repeat: n, ...r } = L(e);
     this._blockOpts = Object.assign({}, this._blockOpts, r);
     const o = w(this._blockOpts);
     (this.repeat =
-      (t = (s = a ?? o.repeat) != null ? s : this.repeat) != null ? t : 1 / 0),
+      (t = (s = n ?? o.repeat) != null ? s : this.repeat) != null ? t : 1 / 0),
       super._update({
         mask: 'm'.repeat(
           Math.max(
@@ -2770,9 +2770,9 @@ class be extends b {
     for (
       let u =
           (i =
-            (a = this._mapPosToBlock(this.displayValue.length)) == null
+            (n = this._mapPosToBlock(this.displayValue.length)) == null
               ? void 0
-              : a.index) != null
+              : n.index) != null
             ? i
             : Math.max(this._blocks.length - 1, 0),
         l,
@@ -2781,7 +2781,7 @@ class be extends b {
         (r = this._blocks[u]) != null ? r : (h = !h && this._allocateBlock(u)));
       ++u
     ) {
-      var i, a, r, o;
+      var i, n, r, o;
       const c = l._appendChar(e, {
         ...t,
         _beforeTailState:
@@ -2800,7 +2800,7 @@ class be extends b {
   _trimEmptyTail(e, t) {
     var s, i;
     e === void 0 && (e = 0);
-    const a = Math.max(
+    const n = Math.max(
       ((s = this._mapPosToBlock(e)) == null ? void 0 : s.index) || 0,
       this.repeatFrom,
       0
@@ -2809,7 +2809,7 @@ class be extends b {
     t != null && (r = (i = this._mapPosToBlock(t)) == null ? void 0 : i.index),
       r == null && (r = this._blocks.length - 1);
     let o = 0;
-    for (let u = r; a <= u && !this._blocks[u].unmaskedValue; --u, ++o);
+    for (let u = r; n <= u && !this._blocks[u].unmaskedValue; --u, ++o);
     o && (this._blocks.splice(r - o + 1, o), (this.mask = this.mask.slice(o)));
   }
   reset() {
@@ -2837,57 +2837,57 @@ class be extends b {
       (super.state = e);
   }
 }
-p.RepeatBlock = be;
+p.RepeatBlock = Fe;
 try {
   globalThis.IMask = p;
 } catch {}
-var _e = Object.defineProperty,
-  Fe = (n, e, t) =>
-    e in n
-      ? _e(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t })
-      : (n[e] = t),
-  v = (n, e, t) => (Fe(n, typeof e != 'symbol' ? e + '' : e, t), t);
-const Ee =
+var Ee = Object.defineProperty,
+  Ce = (a, e, t) =>
+    e in a
+      ? Ee(a, e, { enumerable: !0, configurable: !0, writable: !0, value: t })
+      : (a[e] = t),
+  v = (a, e, t) => (Ce(a, typeof e != 'symbol' ? e + '' : e, t), t);
+const ye =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-  Ce = /^-?[0-9]\d*$/,
-  ye = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/,
-  Ae = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-  Se = (n) => {
-    let e = n;
-    return typeof n == 'string' && (e = n.trim()), !e;
+  Ae = /^-?[0-9]\d*$/,
+  Se = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/,
+  we = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+  xe = (a) => {
+    let e = a;
+    return typeof a == 'string' && (e = a.trim()), !e;
   },
-  we = (n) => Ee.test(n),
-  xe = (n, e) => n.length > e,
-  Ie = (n, e) => n.length < e,
-  Ve = (n) => (typeof n != 'string' ? !1 : !isNaN(+n) && !isNaN(parseFloat(n))),
-  Te = (n) => Ce.test(n),
-  Me = (n) => ye.test(n),
-  Be = (n) => Ae.test(n),
-  Le = (n, e) => n > e,
-  De = (n, e) => n < e,
-  A = (n) => typeof n != 'string' || n === '';
-var g = ((n) => (
-    (n.Required = 'required'),
-    (n.Email = 'email'),
-    (n.MinLength = 'minLength'),
-    (n.MaxLength = 'maxLength'),
-    (n.Password = 'password'),
-    (n.Number = 'number'),
-    (n.Integer = 'integer'),
-    (n.MaxNumber = 'maxNumber'),
-    (n.MinNumber = 'minNumber'),
-    (n.StrongPassword = 'strongPassword'),
-    (n.CustomRegexp = 'customRegexp'),
-    (n.MinFilesCount = 'minFilesCount'),
-    (n.MaxFilesCount = 'maxFilesCount'),
-    (n.Files = 'files'),
-    n
+  Ie = (a) => ye.test(a),
+  Ve = (a, e) => a.length > e,
+  Te = (a, e) => a.length < e,
+  Me = (a) => (typeof a != 'string' ? !1 : !isNaN(+a) && !isNaN(parseFloat(a))),
+  Be = (a) => Ae.test(a),
+  Le = (a) => Se.test(a),
+  De = (a) => we.test(a),
+  Oe = (a, e) => a > e,
+  Ne = (a, e) => a < e,
+  A = (a) => typeof a != 'string' || a === '';
+var g = ((a) => (
+    (a.Required = 'required'),
+    (a.Email = 'email'),
+    (a.MinLength = 'minLength'),
+    (a.MaxLength = 'maxLength'),
+    (a.Password = 'password'),
+    (a.Number = 'number'),
+    (a.Integer = 'integer'),
+    (a.MaxNumber = 'maxNumber'),
+    (a.MinNumber = 'minNumber'),
+    (a.StrongPassword = 'strongPassword'),
+    (a.CustomRegexp = 'customRegexp'),
+    (a.MinFilesCount = 'minFilesCount'),
+    (a.MaxFilesCount = 'maxFilesCount'),
+    (a.Files = 'files'),
+    a
   ))(g || {}),
-  K = ((n) => ((n.Required = 'required'), n))(K || {}),
-  ne = ((n) => ((n.Label = 'label'), (n.LabelArrow = 'labelArrow'), n))(
-    ne || {}
+  Y = ((a) => ((a.Required = 'required'), a))(Y || {}),
+  ue = ((a) => ((a.Label = 'label'), (a.LabelArrow = 'labelArrow'), a))(
+    ue || {}
   );
-const X = [
+const J = [
     { key: g.Required, dict: { en: 'The field is required' } },
     { key: g.Email, dict: { en: 'Email has invalid format' } },
     {
@@ -2934,40 +2934,40 @@ const X = [
       }
     }
   ],
-  Oe = 'Value is incorrect',
-  M = (n) =>
-    typeof n == 'object' &&
-    n !== null &&
-    'then' in n &&
-    typeof n.then == 'function',
-  Ne = (n) => {
-    let e = n;
+  Re = 'Value is incorrect',
+  M = (a) =>
+    typeof a == 'object' &&
+    a !== null &&
+    'then' in a &&
+    typeof a.then == 'function',
+  Pe = (a) => {
+    let e = a;
     const t = [];
     for (; e; ) t.unshift(e), (e = e.parentNode);
     return t;
   },
-  Re = (n, e) => {
+  je = (a, e) => {
     const t = [...e].reverse();
     for (let s = 0, i = t.length; s < i; ++s) {
-      const a = t[s];
-      for (const r in n) {
-        const o = n[r];
-        if (o.groupElem === a) return [r, o];
+      const n = t[s];
+      for (const r in a) {
+        const o = a[r];
+        if (o.groupElem === n) return [r, o];
       }
     }
     return null;
   },
-  C = (n) =>
-    Array.isArray(n)
-      ? n.filter((e) => e.length > 0)
-      : typeof n == 'string' && n.trim()
-        ? [...n.split(' ').filter((e) => e.length > 0)]
+  C = (a) =>
+    Array.isArray(a)
+      ? a.filter((e) => e.length > 0)
+      : typeof a == 'string' && a.trim()
+        ? [...a.split(' ').filter((e) => e.length > 0)]
         : [],
-  B = (n) => n instanceof Element || n instanceof HTMLDocument,
-  Pe =
+  B = (a) => a instanceof Element || a instanceof HTMLDocument,
+  $e =
     ".just-validate-error-label[data-tooltip=true]{position:fixed;padding:4px 8px;background:#423f3f;color:#fff;white-space:nowrap;z-index:10;border-radius:4px;transform:translateY(-5px)}.just-validate-error-label[data-tooltip=true]:before{content:'';width:0;height:0;border-left:solid 5px transparent;border-right:solid 5px transparent;border-bottom:solid 5px #423f3f;position:absolute;z-index:3;display:block;bottom:-5px;transform:rotate(180deg);left:calc(50% - 5px)}.just-validate-error-label[data-tooltip=true][data-direction=left]{transform:translateX(-5px)}.just-validate-error-label[data-tooltip=true][data-direction=left]:before{right:-7px;bottom:auto;left:auto;top:calc(50% - 2px);transform:rotate(90deg)}.just-validate-error-label[data-tooltip=true][data-direction=right]{transform:translateX(5px)}.just-validate-error-label[data-tooltip=true][data-direction=right]:before{right:auto;bottom:auto;left:-7px;top:calc(50% - 2px);transform:rotate(-90deg)}.just-validate-error-label[data-tooltip=true][data-direction=bottom]{transform:translateY(5px)}.just-validate-error-label[data-tooltip=true][data-direction=bottom]:before{right:auto;bottom:auto;left:calc(50% - 5px);top:-5px;transform:rotate(0)}",
   D = 5,
-  H = {
+  z = {
     errorFieldStyle: { color: '#b81111', border: '1px solid #B81111' },
     errorFieldCssClass: 'just-validate-error-field',
     successFieldCssClass: 'just-validate-success-field',
@@ -2980,7 +2980,7 @@ const X = [
     validateBeforeSubmitting: !1,
     submitFormAutomatically: !1
   };
-class oe {
+class he {
   constructor(e, t, s) {
     v(this, 'form', null),
       v(this, 'fields', {}),
@@ -2988,11 +2988,11 @@ class oe {
       v(this, 'errors', {}),
       v(this, 'isValid', !1),
       v(this, 'isSubmitted', !1),
-      v(this, 'globalConfig', H),
+      v(this, 'globalConfig', z),
       v(this, 'errorLabels', {}),
       v(this, 'successLabels', {}),
       v(this, 'eventListeners', []),
-      v(this, 'dictLocale', X),
+      v(this, 'dictLocale', J),
       v(this, 'currentLocale', 'en'),
       v(this, 'customStyleTags', {}),
       v(this, 'onSuccessCallback'),
@@ -3004,23 +3004,23 @@ class oe {
       v(this, 'fieldIds', new Map()),
       v(this, 'getKeyByFieldSelector', (i) => this.fieldIds.get(i)),
       v(this, 'getFieldSelectorByKey', (i) => {
-        for (const [a, r] of this.fieldIds) if (i === r) return a;
+        for (const [n, r] of this.fieldIds) if (i === r) return n;
       }),
       v(this, 'getCompatibleFields', () => {
         const i = {};
         return (
-          Object.keys(this.fields).forEach((a) => {
-            let r = a;
-            const o = this.getFieldSelectorByKey(a);
-            typeof o == 'string' && (r = o), (i[r] = { ...this.fields[a] });
+          Object.keys(this.fields).forEach((n) => {
+            let r = n;
+            const o = this.getFieldSelectorByKey(n);
+            typeof o == 'string' && (r = o), (i[r] = { ...this.fields[n] });
           }),
           i
         );
       }),
       v(this, 'setKeyByFieldSelector', (i) => {
         if (this.fieldIds.has(i)) return this.fieldIds.get(i);
-        const a = String(this.fieldIds.size + 1);
-        return this.fieldIds.set(i, a), a;
+        const n = String(this.fieldIds.size + 1);
+        return this.fieldIds.set(i, n), n;
       }),
       v(this, 'refreshAllTooltips', () => {
         this.tooltips.forEach((i) => {
@@ -3039,22 +3039,22 @@ class oe {
         i.preventDefault(), (this.isSubmitted = !0), this.validateHandler(i);
       }),
       v(this, 'handleFieldChange', (i) => {
-        let a;
+        let n;
         for (const r in this.fields)
           if (this.fields[r].elem === i) {
-            a = r;
+            n = r;
             break;
           }
-        a && ((this.fields[a].touched = !0), this.validateField(a, !0));
+        n && ((this.fields[n].touched = !0), this.validateField(n, !0));
       }),
       v(this, 'handleGroupChange', (i) => {
-        let a;
+        let n;
         for (const r in this.groupFields)
           if (this.groupFields[r].elems.find((u) => u === i)) {
-            a = r;
+            n = r;
             break;
           }
-        a && ((this.groupFields[a].touched = !0), this.validateGroup(a, !0));
+        n && ((this.groupFields[n].touched = !0), this.validateGroup(n, !0));
       }),
       v(this, 'handlerChange', (i) => {
         i.target &&
@@ -3070,7 +3070,7 @@ class oe {
       (this.errors = {}),
       (this.isValid = !1),
       (this.isSubmitted = !1),
-      (this.globalConfig = H),
+      (this.globalConfig = z),
       (this.errorLabels = {}),
       (this.successLabels = {}),
       (this.eventListeners = []),
@@ -3091,21 +3091,21 @@ class oe {
         'Form selector is not valid. Please specify a string selector or a DOM element.'
       );
     if (
-      ((this.globalConfig = { ...H, ...t }),
-      s && (this.dictLocale = [...s, ...X]),
+      ((this.globalConfig = { ...z, ...t }),
+      s && (this.dictLocale = [...s, ...J]),
       this.isTooltip())
     ) {
       const i = document.createElement('style');
-      (i.textContent = Pe),
-        (this.customStyleTags[ne.Label] = document.head.appendChild(i)),
+      (i.textContent = $e),
+        (this.customStyleTags[ue.Label] = document.head.appendChild(i)),
         this.addListener('scroll', document, this.handleDocumentScroll);
     }
   }
   getLocalisedString(e, t, s) {
     var i;
-    const a = s ?? e;
+    const n = s ?? e;
     let r =
-      (i = this.dictLocale.find((o) => o.key === a)) == null
+      (i = this.dictLocale.find((o) => o.key === n)) == null
         ? void 0
         : i.dict[this.currentLocale];
     if ((r || (s && (r = s)), r && t !== void 0))
@@ -3118,7 +3118,7 @@ class oe {
         case g.MaxFilesCount:
           r = r.replace(':value', String(t));
       }
-    return r || s || Oe;
+    return r || s || Re;
   }
   getFieldErrorMessage(e, t) {
     const s =
@@ -3173,14 +3173,14 @@ class oe {
   }
   validateGroupRule(e, t, s) {
     switch (s.rule) {
-      case K.Required:
+      case Y.Required:
         t.every((i) => !i.checked)
           ? this.setGroupInvalid(e, s)
           : this.setGroupValid(e, s);
     }
   }
   validateFieldRule(e, t, s, i = !1) {
-    const a = s.value,
+    const n = s.value,
       r = this.getElemValue(t);
     if (s.plugin) {
       s.plugin(r, this.getCompatibleFields()) || this.setFieldInvalid(e, s);
@@ -3188,23 +3188,23 @@ class oe {
     }
     switch (s.rule) {
       case g.Required: {
-        Se(r) && this.setFieldInvalid(e, s);
+        xe(r) && this.setFieldInvalid(e, s);
         break;
       }
       case g.Email: {
         if (A(r)) break;
-        we(r) || this.setFieldInvalid(e, s);
+        Ie(r) || this.setFieldInvalid(e, s);
         break;
       }
       case g.MaxLength: {
-        if (a === void 0) {
+        if (n === void 0) {
           console.error(
             `Value for ${s.rule} rule for [${e}] field is not defined. The field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           break;
         }
-        if (typeof a != 'number') {
+        if (typeof n != 'number') {
           console.error(
             `Value for ${s.rule} rule for [${e}] should be a number. The field will be always invalid.`
           ),
@@ -3212,18 +3212,18 @@ class oe {
           break;
         }
         if (A(r)) break;
-        xe(r, a) && this.setFieldInvalid(e, s);
+        Ve(r, n) && this.setFieldInvalid(e, s);
         break;
       }
       case g.MinLength: {
-        if (a === void 0) {
+        if (n === void 0) {
           console.error(
             `Value for ${s.rule} rule for [${e}] field is not defined. The field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           break;
         }
-        if (typeof a != 'number') {
+        if (typeof n != 'number') {
           console.error(
             `Value for ${s.rule} rule for [${e}] should be a number. The field will be always invalid.`
           ),
@@ -3231,38 +3231,38 @@ class oe {
           break;
         }
         if (A(r)) break;
-        Ie(r, a) && this.setFieldInvalid(e, s);
+        Te(r, n) && this.setFieldInvalid(e, s);
         break;
       }
       case g.Password: {
         if (A(r)) break;
-        Me(r) || this.setFieldInvalid(e, s);
+        Le(r) || this.setFieldInvalid(e, s);
         break;
       }
       case g.StrongPassword: {
         if (A(r)) break;
-        Be(r) || this.setFieldInvalid(e, s);
+        De(r) || this.setFieldInvalid(e, s);
         break;
       }
       case g.Number: {
         if (A(r)) break;
-        Ve(r) || this.setFieldInvalid(e, s);
+        Me(r) || this.setFieldInvalid(e, s);
         break;
       }
       case g.Integer: {
         if (A(r)) break;
-        Te(r) || this.setFieldInvalid(e, s);
+        Be(r) || this.setFieldInvalid(e, s);
         break;
       }
       case g.MaxNumber: {
-        if (a === void 0) {
+        if (n === void 0) {
           console.error(
             `Value for ${s.rule} rule for [${e}] field is not defined. The field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           break;
         }
-        if (typeof a != 'number') {
+        if (typeof n != 'number') {
           console.error(
             `Value for ${s.rule} rule for [${e}] field should be a number. The field will be always invalid.`
           ),
@@ -3271,18 +3271,18 @@ class oe {
         }
         if (A(r)) break;
         const o = +r;
-        (Number.isNaN(o) || Le(o, a)) && this.setFieldInvalid(e, s);
+        (Number.isNaN(o) || Oe(o, n)) && this.setFieldInvalid(e, s);
         break;
       }
       case g.MinNumber: {
-        if (a === void 0) {
+        if (n === void 0) {
           console.error(
             `Value for ${s.rule} rule for [${e}] field is not defined. The field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           break;
         }
-        if (typeof a != 'number') {
+        if (typeof n != 'number') {
           console.error(
             `Value for ${s.rule} rule for [${e}] field should be a number. The field will be always invalid.`
           ),
@@ -3291,11 +3291,11 @@ class oe {
         }
         if (A(r)) break;
         const o = +r;
-        (Number.isNaN(o) || De(o, a)) && this.setFieldInvalid(e, s);
+        (Number.isNaN(o) || Ne(o, n)) && this.setFieldInvalid(e, s);
         break;
       }
       case g.CustomRegexp: {
-        if (a === void 0) {
+        if (n === void 0) {
           console.error(
             `Value for ${s.rule} rule for [${e}] field is not defined. This field will be always invalid.`
           ),
@@ -3304,7 +3304,7 @@ class oe {
         }
         let o;
         try {
-          o = new RegExp(a);
+          o = new RegExp(n);
         } catch {
           console.error(
             `Value for ${s.rule} rule for [${e}] should be a valid regexp. This field will be always invalid.`
@@ -3317,63 +3317,63 @@ class oe {
         break;
       }
       case g.MinFilesCount: {
-        if (a === void 0) {
+        if (n === void 0) {
           console.error(
             `Value for ${s.rule} rule for [${e}] field is not defined. This field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           break;
         }
-        if (typeof a != 'number') {
+        if (typeof n != 'number') {
           console.error(
             `Value for ${s.rule} rule for [${e}] field should be a number. The field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           break;
         }
-        if (Number.isFinite(r == null ? void 0 : r.length) && r.length < a) {
+        if (Number.isFinite(r == null ? void 0 : r.length) && r.length < n) {
           this.setFieldInvalid(e, s);
           break;
         }
         break;
       }
       case g.MaxFilesCount: {
-        if (a === void 0) {
+        if (n === void 0) {
           console.error(
             `Value for ${s.rule} rule for [${e}] field is not defined. This field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           break;
         }
-        if (typeof a != 'number') {
+        if (typeof n != 'number') {
           console.error(
             `Value for ${s.rule} rule for [${e}] field should be a number. The field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           break;
         }
-        if (Number.isFinite(r == null ? void 0 : r.length) && r.length > a) {
+        if (Number.isFinite(r == null ? void 0 : r.length) && r.length > n) {
           this.setFieldInvalid(e, s);
           break;
         }
         break;
       }
       case g.Files: {
-        if (a === void 0) {
+        if (n === void 0) {
           console.error(
             `Value for ${s.rule} rule for [${e}] field is not defined. This field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           return;
         }
-        if (typeof a != 'object') {
+        if (typeof n != 'object') {
           console.error(
             `Value for ${s.rule} rule for [${e}] field should be an object. This field will be always invalid.`
           ),
             this.setFieldInvalid(e, s);
           return;
         }
-        const o = a.files;
+        const o = n.files;
         if (typeof o != 'object') {
           console.error(
             `Value for ${s.rule} rule for [${e}] field should be an object with files array. This field will be always invalid.`
@@ -3477,18 +3477,18 @@ class oe {
     var s;
     const i = this.fields[e];
     i.isValid = !0;
-    const a = [];
+    const n = [];
     return (
       [...i.rules].reverse().forEach((r) => {
         const o = this.validateFieldRule(e, i.elem, r, t);
-        M(o) && a.push(o);
+        M(o) && n.push(o);
       }),
       i.isValid &&
         this.setFieldValid(
           e,
           (s = i.config) == null ? void 0 : s.successMessage
         ),
-      Promise.allSettled(a).finally(() => {
+      Promise.allSettled(n).finally(() => {
         var r;
         t &&
           ((r = this.onValidateCallback) == null ||
@@ -3540,15 +3540,15 @@ class oe {
     const s = this.groupFields[e],
       i = [];
     return (
-      [...s.rules].reverse().forEach((a) => {
-        const r = this.validateGroupRule(e, s.elems, a);
+      [...s.rules].reverse().forEach((n) => {
+        const r = this.validateGroupRule(e, s.elems, n);
         M(r) && i.push(r);
       }),
       Promise.allSettled(i).finally(() => {
-        var a;
+        var n;
         t &&
-          ((a = this.onValidateCallback) == null ||
-            a.call(this, {
+          ((n = this.onValidateCallback) == null ||
+            n.call(this, {
               isValid: this.isFormValid(),
               isSubmitted: this.isSubmitted,
               fields: this.getCompatibleFields(),
@@ -3574,12 +3574,12 @@ class oe {
     return new Promise((t) => {
       const s = [];
       Object.keys(this.fields).forEach((i) => {
-        const a = this.validateField(i);
-        M(a) && s.push(a);
+        const n = this.validateField(i);
+        M(n) && s.push(n);
       }),
         Object.keys(this.groupFields).forEach((i) => {
-          const a = this.validateGroup(i);
-          M(a) && s.push(a);
+          const n = this.validateGroup(i);
+          M(n) && s.push(n);
         }),
         Promise.allSettled(s).then(() => {
           var i;
@@ -3607,15 +3607,15 @@ class oe {
     return (
       this.globalConfig.lockForm && this.lockForm(),
       this.validate(t).finally(() => {
-        var s, i, a;
+        var s, i, n;
         this.globalConfig.lockForm && this.unlockForm(),
           this.isValid
             ? ((s = this.onSuccessCallback) == null || s.call(this, e),
               this.globalConfig.submitFormAutomatically &&
                 ((i = e == null ? void 0 : e.currentTarget) == null ||
                   i.submit()))
-            : (a = this.onFailCallback) == null ||
-              a.call(this, this.getCompatibleFields(), this.groupFields);
+            : (n = this.onFailCallback) == null ||
+              n.call(this, this.getCompatibleFields(), this.groupFields);
       })
     );
   }
@@ -3663,9 +3663,9 @@ class oe {
           `Rule should be one of these types: ${Object.values(g).join(', ')}. Provided value: ${r.rule}`
         );
     });
-    const a = this.setKeyByFieldSelector(e);
+    const n = this.setKeyByFieldSelector(e);
     return (
-      (this.fields[a] = {
+      (this.fields[n] = {
         elem: i,
         rules: t,
         isValid: void 0,
@@ -3674,7 +3674,7 @@ class oe {
       }),
       this.setListeners(i),
       (this.isSubmitted || this.globalConfig.validateBeforeSubmitting) &&
-        this.validateField(a),
+        this.validateField(n),
       this
     );
   }
@@ -3715,19 +3715,19 @@ class oe {
       throw Error(
         'Group selector is not valid. Please specify a string selector or a valid DOM element.'
       );
-    let a;
-    if ((typeof e == 'string' ? (a = this.form.querySelector(e)) : (a = e), !a))
+    let n;
+    if ((typeof e == 'string' ? (n = this.form.querySelector(e)) : (n = e), !n))
       throw Error('Group selector not found! Please check the group selector.');
-    const r = a.querySelectorAll('input'),
+    const r = n.querySelectorAll('input'),
       o = Array.from(r).filter((l) => {
-        const h = Re(this.groupFields, Ne(l));
+        const h = je(this.groupFields, Pe(l));
         return h ? h[1].elems.find((c) => c !== l) : !0;
       }),
       u = this.setKeyByFieldSelector(e);
     return (
       (this.groupFields[u] = {
-        rules: [{ rule: K.Required, errorMessage: t, successMessage: i }],
-        groupElem: a,
+        rules: [{ rule: Y.Required, errorMessage: t, successMessage: i }],
+        groupElem: n,
         elems: o,
         touched: !1,
         isValid: void 0,
@@ -3761,7 +3761,7 @@ class oe {
       (s = this.successLabels[e]) == null || s.remove();
   }
   clearFieldStyle(e) {
-    var t, s, i, a;
+    var t, s, i, n;
     const r = this.fields[e],
       o =
         ((t = r.config) == null ? void 0 : t.errorFieldStyle) ||
@@ -3782,7 +3782,7 @@ class oe {
             this.globalConfig.errorFieldCssClass
         ),
         ...C(
-          ((a = r.config) == null ? void 0 : a.successFieldCssClass) ||
+          ((n = r.config) == null ? void 0 : n.successFieldCssClass) ||
             this.globalConfig.successFieldCssClass
         )
       );
@@ -3796,10 +3796,10 @@ class oe {
     for (const s in this.fields) this.clearFieldStyle(s);
     for (const s in this.groupFields) {
       const i = this.groupFields[s],
-        a =
+        n =
           ((e = i.config) == null ? void 0 : e.errorFieldStyle) ||
           this.globalConfig.errorFieldStyle;
-      Object.keys(a).forEach((o) => {
+      Object.keys(n).forEach((o) => {
         i.elems.forEach((u) => {
           var l;
           (u.style[o] = ''),
@@ -3856,27 +3856,27 @@ class oe {
   }
   renderTooltip(e, t, s) {
     var i;
-    const { top: a, left: r, width: o, height: u } = e.getBoundingClientRect(),
+    const { top: n, left: r, width: o, height: u } = e.getBoundingClientRect(),
       l = t.getBoundingClientRect(),
       h = s || ((i = this.globalConfig.tooltip) == null ? void 0 : i.position);
     switch (h) {
       case 'left': {
-        (t.style.top = `${a + u / 2 - l.height / 2}px`),
+        (t.style.top = `${n + u / 2 - l.height / 2}px`),
           (t.style.left = `${r - l.width - D}px`);
         break;
       }
       case 'top': {
-        (t.style.top = `${a - l.height - D}px`),
+        (t.style.top = `${n - l.height - D}px`),
           (t.style.left = `${r + o / 2 - l.width / 2}px`);
         break;
       }
       case 'right': {
-        (t.style.top = `${a + u / 2 - l.height / 2}px`),
+        (t.style.top = `${n + u / 2 - l.height / 2}px`),
           (t.style.left = `${r + o + D}px`);
         break;
       }
       case 'bottom': {
-        (t.style.top = `${a + u + D}px`),
+        (t.style.top = `${n + u + D}px`),
           (t.style.left = `${r + o / 2 - l.width / 2}px`);
         break;
       }
@@ -3893,14 +3893,14 @@ class oe {
   createErrorLabelElem(e, t, s) {
     const i = document.createElement('div');
     i.innerHTML = t;
-    const a = this.isTooltip()
+    const n = this.isTooltip()
       ? s == null
         ? void 0
         : s.errorLabelStyle
       : (s == null ? void 0 : s.errorLabelStyle) ||
         this.globalConfig.errorLabelStyle;
     return (
-      Object.assign(i.style, a),
+      Object.assign(i.style, n),
       i.classList.add(
         ...C(
           (s == null ? void 0 : s.errorLabelCssClass) ||
@@ -3918,11 +3918,11 @@ class oe {
     if (t === void 0) return null;
     const i = document.createElement('div');
     i.innerHTML = t;
-    const a =
+    const n =
       (s == null ? void 0 : s.successLabelStyle) ||
       this.globalConfig.successLabelStyle;
     return (
-      Object.assign(i.style, a),
+      Object.assign(i.style, n),
       i.classList.add(
         ...C(
           (s == null ? void 0 : s.successLabelCssClass) ||
@@ -3957,13 +3957,13 @@ class oe {
     (!i && this.renderErrorsContainer(t, s)) || e.appendChild(t);
   }
   renderFieldLabel(e, t, s, i) {
-    var a, r, o, u, l, h, c;
+    var n, r, o, u, l, h, c;
     if (!(!i && this.renderErrorsContainer(t, s)))
       if (e.type === 'checkbox' || e.type === 'radio') {
         const m = document.querySelector(
           `label[for="${e.getAttribute('id')}"]`
         );
-        ((r = (a = e.parentElement) == null ? void 0 : a.tagName) == null
+        ((r = (n = e.parentElement) == null ? void 0 : n.tagName) == null
           ? void 0
           : r.toLowerCase()) === 'label'
           ? (u = (o = e.parentElement) == null ? void 0 : o.parentElement) ==
@@ -3975,7 +3975,7 @@ class oe {
   }
   showLabels(e, t) {
     Object.keys(e).forEach((s, i) => {
-      const a = e[s],
+      const n = e[s],
         r = this.getKeyByFieldSelector(s);
       if (!r || !this.fields[r]) {
         console.error('Field not found. Check the field selector.');
@@ -3985,7 +3985,7 @@ class oe {
       (o.isValid = !t),
         this.clearFieldStyle(r),
         this.clearFieldLabel(r),
-        this.renderFieldError(r, !1, a),
+        this.renderFieldError(r, !1, n),
         i === 0 &&
           this.globalConfig.focusInvalidField &&
           setTimeout(() => o.elem.focus(), 0);
@@ -4006,7 +4006,7 @@ class oe {
     this.showLabels(e, !1);
   }
   renderFieldError(e, t = !1, s) {
-    var i, a, r, o, u, l;
+    var i, n, r, o, u, l;
     const h = this.fields[e];
     if (
       (h.isValid === !1 && (this.isValid = !1),
@@ -4030,7 +4030,7 @@ class oe {
           ),
           h.elem.classList.add(
             ...C(
-              ((a = h.config) == null ? void 0 : a.successFieldCssClass) ||
+              ((n = h.config) == null ? void 0 : n.successFieldCssClass) ||
                 this.globalConfig.successFieldCssClass
             )
           );
@@ -4065,7 +4065,7 @@ class oe {
         );
   }
   renderGroupError(e, t = !0) {
-    var s, i, a, r;
+    var s, i, n, r;
     const o = this.groupFields[e];
     if (
       (o.isValid === !1 && (this.isValid = !1),
@@ -4123,7 +4123,7 @@ class oe {
           this.renderTooltip(
             o.groupElem,
             u,
-            (r = (a = o.config) == null ? void 0 : a.tooltip) == null
+            (r = (n = o.config) == null ? void 0 : n.tooltip) == null
               ? void 0
               : r.position
           )
@@ -4180,10 +4180,10 @@ class oe {
     return (this.onValidateCallback = e), this;
   }
 }
-function je(n) {
-  return n && n.__esModule && Object.prototype.hasOwnProperty.call(n, 'default')
-    ? n.default
-    : n;
+function Ge(a) {
+  return a && a.__esModule && Object.prototype.hasOwnProperty.call(a, 'default')
+    ? a.default
+    : a;
 }
 var N = { exports: {} };
 /*!
@@ -4192,16 +4192,16 @@ var N = { exports: {} };
  * @license MIT licensed
  *
  * Copyright (C) 2018 Varun A P
- */ var $e = N.exports,
-  J;
-function Ge() {
+ */ var qe = N.exports,
+  Q;
+function Ue() {
   return (
-    J ||
-      ((J = 1),
-      (function (n) {
+    Q ||
+      ((Q = 1),
+      (function (a) {
         (function (e, t) {
-          n.exports ? (n.exports = t()) : (e.Toastify = t());
-        })($e, function (e) {
+          a.exports ? (a.exports = t()) : (e.Toastify = t());
+        })(qe, function (e) {
           var t = function (r) {
               return new t.lib.init(r);
             },
@@ -4441,7 +4441,7 @@ function Ge() {
                 c < l.length;
                 c++
               ) {
-                a(l[c], 'toastify-top') === !0
+                n(l[c], 'toastify-top') === !0
                   ? (h = 'toastify-top')
                   : (h = 'toastify-bottom');
                 var m = l[c].offsetHeight;
@@ -4450,7 +4450,7 @@ function Ge() {
                   I = window.innerWidth > 0 ? window.innerWidth : screen.width;
                 I <= 360
                   ? ((l[c].style[h] = u[h] + 'px'), (u[h] += m + _))
-                  : a(l[c], 'toastify-left') === !0
+                  : n(l[c], 'toastify-left') === !0
                     ? ((l[c].style[h] = r[h] + 'px'), (r[h] += m + _))
                     : ((l[c].style[h] = o[h] + 'px'), (o[h] += m + _));
               }
@@ -4463,7 +4463,7 @@ function Ge() {
                 : o.offset[r] + 'px'
               : '0px';
           }
-          function a(r, o) {
+          function n(r, o) {
             return !r || typeof o != 'string'
               ? !1
               : !!(
@@ -4477,19 +4477,19 @@ function Ge() {
     N.exports
   );
 }
-var qe = Ge();
-const Ue = je(qe),
-  le = (n, e = 'success') => {
-    Ue({
-      text: n,
+var He = Ue();
+const ze = Ge(He),
+  U = (a, e = 'success') => {
+    ze({
+      text: a,
       duration: 3e3,
       gravity: 'top',
       position: 'right',
       backgroundColor: e === 'success' ? 'green' : 'red'
     }).showToast();
   },
-  He = new oe('#contact-form');
-He.addField('#name', [
+  Ke = new he('#contact-form');
+Ke.addField('#name', [
   { rule: 'required', errorMessage: 'El nombre es obligatorio' },
   {
     rule: 'minLength',
@@ -4517,15 +4517,15 @@ He.addField('#name', [
       errorMessage: 'El mensaje debe tener al menos 5 caracteres'
     }
   ])
-  .onSuccess((n) => {
-    n.preventDefault();
-    const e = n.target;
+  .onSuccess((a) => {
+    a.preventDefault();
+    const e = a.target;
     setTimeout(() => {
-      le('Formulario enviado correctamente!'), e.reset();
+      U('Formulario enviado correctamente!'), e.reset();
     }, 500);
   });
-const ze = new oe('#appt-form');
-ze.addField('#appt-name', [
+const Ye = new he('#appt-form');
+Ye.addField('#appt-name', [
   { rule: 'required', errorMessage: 'El nombre es obligatorio' },
   {
     rule: 'minLength',
@@ -4553,18 +4553,18 @@ ze.addField('#appt-name', [
       errorMessage: 'El mensaje debe tener al menos 5 caracteres'
     }
   ])
-  .onSuccess((n) => {
-    n.preventDefault();
-    const e = n.target;
+  .onSuccess((a) => {
+    a.preventDefault();
+    const e = a.target;
     setTimeout(() => {
-      le('Solicitud enviada correctamente!'), e.reset();
+      U('Solicitud enviada correctamente!'), e.reset();
     }, 500);
   });
-const Q = document.querySelector('.phone');
-Q && p(Q, { mask: '(000) 0000-0000' });
-const Ke = new IntersectionObserver(
-    (n) => {
-      n.forEach((e) => {
+const ee = document.querySelector('.phone');
+ee && p(ee, { mask: '(000) 0000-0000' });
+const Ze = new IntersectionObserver(
+    (a) => {
+      a.forEach((e) => {
         e.isIntersecting
           ? e.target.classList.add('visible')
           : e.target.classList.remove('visible');
@@ -4572,5 +4572,15 @@ const Ke = new IntersectionObserver(
     },
     { threshold: 0.1 }
   ),
-  Ye = document.querySelectorAll('.hidden-until-visible');
-Ye.forEach((n) => Ke.observe(n));
+  We = document.querySelectorAll('.hidden-until-visible');
+We.forEach((a) => Ze.observe(a));
+const te = document.querySelector('.request-button');
+te &&
+  te.addEventListener('click', () => {
+    U('Solicitud enviada');
+  });
+const se = document.getElementById('projects-request');
+se &&
+  se.addEventListener('click', () => {
+    U('Ver más proyectos');
+  });
