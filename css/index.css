@@ -2546,6 +2546,18 @@ html {
   height: 1.25rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -2572,6 +2584,14 @@ html {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-3 {
+  width: 0.75rem;
 }
 
 .max-w-full {
@@ -2743,6 +2763,11 @@ html {
 .text-neutral-content {
   --tw-text-opacity: 1;
   color: var(--fallback-nc,oklch(var(--nc)/var(--tw-text-opacity, 1)));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
 
 .shadow {
@@ -2942,12 +2967,28 @@ html {
     height: 2rem;
   }
 
+  .lg\:h-4 {
+    height: 1rem;
+  }
+
+  .lg\:h-6 {
+    height: 1.5rem;
+  }
+
   .lg\:w-8 {
     width: 2rem;
   }
 
   .lg\:w-96 {
     width: 24rem;
+  }
+
+  .lg\:w-4 {
+    width: 1rem;
+  }
+
+  .lg\:w-6 {
+    width: 1.5rem;
   }
 
   .lg\:max-w-md {
