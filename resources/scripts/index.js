@@ -55,3 +55,22 @@ if (phoneInput) {
     mask: '(000) 0000-0000'
   });
 }
+
+/* Observer */
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  },
+  {
+    threshold: 0.1,
+  }
+);
+
+const elements = document.querySelectorAll('.hidden-until-visible');
+elements.forEach((el) => observer.observe(el));

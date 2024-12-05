@@ -28,6 +28,7 @@
   "dependencies": {
     "daisyui": "^4.12.14",
     "imask": "^7.6.1",
-    "just-validate": "^4.3.0"
+    "just-validate": "^4.3.0",
+    "tailwindcss-animated": "^1.1.2"
   }
 }
