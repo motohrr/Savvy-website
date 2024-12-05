@@ -33,20 +33,96 @@
             tabindex="0"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li><a>Item 1</a></li>
-            <li><a>Item 3</a></li>
+            <li><a href="#home-section">Inicio</a></li>
+            <li><a href="#services-section">Servicios</a></li>
+            <li><a>Proyectos</a></li>
+            <li><a>Contacto</a></li>
           </ul>
         </div>
-        <a class="btn btn-ghost text-xl">Alfredo's</a>
+        <a class="btn btn-ghost text-2xl norican-font">Alfredo's</a>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-          <li><a>Item 1</a></li>
-          <li><a>Item 3</a></li>
+          <li><a href="#home-section">Inicio</a></li>
+          <li><a href="#services-section">Servicios</a></li>
+          <li><a>Proyectos</a></li>
+          <li><a>Contacto</a></li>
         </ul>
       </div>
       <div class="navbar-end">
         <!-- Navbar end content -->
+      </div>
+    </div>
+
+    <!-- Home section -->
+    <div
+      class="hero min-h-screen"
+      style="background-image: url(./images/home-1-ceil.jpg)"
+      id="home-section"
+    >
+      <div class="hero-overlay bg-opacity-60"></div>
+      <div class="hero-content text-neutral-content text-center">
+        <div class="max-w-md">
+          <h1 class="mb-5 text-5xl font-bold">
+            Perfección en techos para espacios exclusivos
+          </h1>
+          <p class="mb-5">
+            Proveemos soluciones de techado premium diseñadas para realzar la
+            belleza y proteger los hogares más distinguidos.
+          </p>
+          <button class="btn btn-primary">Agendar una consulta</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services 1 -->
+    <div class="hero bg-base-200 min-h-screen" id="services-section">
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <img
+          src="./images/services-1-metal.jpg"
+          class="max-w-sm rounded-lg shadow-2xl"
+        />
+        <div>
+          <h1 class="text-5xl font-bold">Techado de metal</h1>
+          <p class="py-6 text-lg">
+            "Soluciones de techado de metal duraderas, modernas y resistentes,
+            ideales para proteger y realzar cualquier propiedad."
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services 2 -->
+    <div class="hero bg-base-200 min-h-screen" id="services-section">
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <div>
+          <h1 class="text-5xl font-bold">Techado de tejas</h1>
+          <p class="py-6 text-lg">
+            "Techado de tejas elegante y resistente, diseñado para brindar
+            estilo y protección duradera a tu hogar."
+          </p>
+        </div>
+        <img
+          src="./images/services-2-roof.jpg"
+          class="max-w-sm rounded-lg shadow-2xl"
+        />
+      </div>
+    </div>
+
+    <!-- Services 3 -->
+    <div class="hero bg-base-200 min-h-screen" id="services-section">
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <img
+          src="./images/services-3-eco.jpg"
+          class="max-w-sm rounded-lg shadow-2xl"
+        />
+        <div>
+          <h1 class="text-5xl font-bold">Techado ecológico</h1>
+          <p class="py-6 text-lg">
+            "Techado ecológico sostenible y eficiente, diseñado para cuidar el
+            planeta mientras protege tu hogar."
+          </p>
+        </div>
       </div>
     </div>
   </body>

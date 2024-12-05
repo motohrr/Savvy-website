@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Norican';
+  src: url('../resources/fonts/Norican-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.norican-font {
+  font-family: 'Norican', sans-serif !important;
+}
